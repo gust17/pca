@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::get('users',[\App\Http\Controllers\AdminController::class,'users']);
+Route::get('user/{id}',[\App\Http\Controllers\AdminController::class,'showuser']);
+Route::get('user/{id}/delete',[\App\Http\Controllers\AdminController::class,'delete']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
 });
