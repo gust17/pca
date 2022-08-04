@@ -25,4 +25,12 @@ class AdminController extends Controller
         $user = User::destroy($id);
         return response('success',201);
     }
+
+    public function userupdate(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->fill($request->all());
+        return response($user,'201');
+
+    }
 }
