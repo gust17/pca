@@ -29,7 +29,8 @@ class AdminController extends Controller
     public function userupdate(Request $request, $id)
     {
         $user = User::find($id);
-        $user->fill($request->all());
+        $user->update($request->all());
+
         return response($user,'201');
 
     }
