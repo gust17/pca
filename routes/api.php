@@ -21,7 +21,7 @@ Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 Route::get('users',[\App\Http\Controllers\AdminController::class,'users']);
 Route::get('user/{id}',[\App\Http\Controllers\AdminController::class,'showuser']);
-Route::get('user/{id}/delete',[\App\Http\Controllers\AdminController::class,'delete']);
+Route::delete('user/{id}/delete',[\App\Http\Controllers\AdminController::class,'delete']);
 Route::put('user/{id}/update',[\App\Http\Controllers\AdminController::class,'userupdate']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
