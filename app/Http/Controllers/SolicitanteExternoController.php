@@ -27,8 +27,11 @@ class SolicitanteExternoController extends Controller
     {
         $solicitante_externo = SolicitanteExterno::findOrFail($id);
         if($request->hasFile('file_0')) {
-            
+            $solicitante_externo->photo = uploadImg($request->photo_0, 'images/pessoas/documentos');
+            $solicitante_externo->save();
         }
+
+        return response('Sucesso', 201);
     }
 
     public function destroy($id)
