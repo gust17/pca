@@ -42,6 +42,10 @@ class AdminController extends Controller
         $user->update($request->all());
 
         if($request->hasFile('photo_0')) {
+            if($user->photo) {
+                unlink($user->photo);
+            }
+
             $imageName = $request->file('photo_0')->getClientOriginalName() . time().'.'.$request->photo_0->extension();  
             $request->photo_0->move(public_path('images/users/profile_pictures'), $imageName);
             $fullName = 'images/users/profile_pictures/' . $imageName;
