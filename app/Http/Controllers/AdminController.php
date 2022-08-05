@@ -43,13 +43,13 @@ class AdminController extends Controller
 
         if($request->hasFile('photo_0')) {
             if($user->photo) {
-                unlink($user->photo);
+                removeImg($user->photo);
             }
 
-            $imageName = $request->file('photo_0')->getClientOriginalName() . time().'.'.$request->photo_0->extension();  
-            $request->photo_0->move(public_path('images/users/profile_pictures'), $imageName);
-            $fullName = 'images/users/profile_pictures/' . $imageName;
-            $user->photo = $fullName;
+            if($request->hasFile('photo_0')) {
+                $user->photo = uploadImg($request->photo_0, 'images/users/profile_pictures');
+            }
+            
             $user->save();
         }
 
