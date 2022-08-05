@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     public function users()
     {
-        $users = User::all();
+        $users = User::withTrashed();
         return response($users,201);
     }
 
@@ -22,7 +22,17 @@ class AdminController extends Controller
 
     public function delete($id)
     {
-        $user = User::destroy($id);
+        $user = User::find($id);
+        $user->delete();
+
+        return response('success',201);
+    }
+
+    public function restore($id)
+    {
+        $user = User::withTrashed()->where('id', $id);
+        $user->restore();
+        
         return response('success',201);
     }
 

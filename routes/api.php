@@ -22,11 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+    Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+
+    
     Route::get('/users',[\App\Http\Controllers\AdminController::class,'users']);
     Route::get('user/{id}',[\App\Http\Controllers\AdminController::class,'showuser']);
     Route::delete('user/{id}/delete',[\App\Http\Controllers\AdminController::class,'delete']);
     Route::put('user/{id}/update',[\App\Http\Controllers\AdminController::class,'userupdate']);
-    Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
-    Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
-
+    Route::post('user/{id}/restore',[\App\Http\Controllers\AdminController::class,'restore']);
 });
