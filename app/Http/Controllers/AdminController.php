@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     public function users()
     {
-        $users = User::withTrashed();
+        $users = User::withTrashed()->get();
         return response($users,201);
     }
 
@@ -30,7 +30,7 @@ class AdminController extends Controller
 
     public function restore($id)
     {
-        $user = User::withTrashed()->where('id', $id);
+        $user = User::withTrashed()->where('id', $id)->first();
         $user->restore();
         
         return response('success',201);

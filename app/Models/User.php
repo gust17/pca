@@ -24,7 +24,8 @@ class User extends Authenticatable
         'password',
         'type',
         'password_validate',
-        'photo'
+        'photo',
+        'deleted_at'
     ];
 
     /**

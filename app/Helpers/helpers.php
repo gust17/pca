@@ -20,4 +20,11 @@ if (! function_exists('removeImg')) {
         return true;
     }
 }
+
+if (! function_exists('formatDate')) {
+    function formatDate($date, $pattern)
+    {
+        return date($pattern, strtotime($date));
+    }
+}
   

@@ -15,23 +15,38 @@ class SolicitanteExternoController extends Controller
 
     public function store(SolicitanteExternoRequest $request)
     {
-        return response(SolicitanteExterno::create($request->all()), 201);
+        $inputs = $request->all();
+        $inputs['data_nascimento'] = formatDate($inputs['data_nascimento'], 'Y-m-d');
+
+        return response(SolicitanteExterno::create($inputs), 201);
     }
 
     public function update($id, SolicitanteExternoRequest $request)
     {
-        return response(SolicitanteExterno::findOrFail($id)->update($request->all()), 201);
+        $inputs = $request->all();
+        $inputs['data_nascimento'] = formatDate($inputs['data_nascimento'], 'Y-m-d');
+
+        return response(SolicitanteExterno::findOrFail($id)->update($inputs), 201);
     }
 
-    public function addFile($id, Request $request) 
+    public function uploadFile($id, Request $request) 
     {
+        $data = $request->all();
+
         $solicitante_externo = SolicitanteExterno::findOrFail($id);
-        if($request->hasFile('file_0')) {
-            $solicitante_externo->photo = uploadImg($request->photo_0, 'images/pessoas/documentos');
+
+        if($request->hasFile('arquivo_0')) {
+            $documentacao = $solicitante_externo->documentacao;
+            $documentacao[] = [
+                'tipo' => $data['tipo_value'],
+                'arquivo' => uploadImg($request->arquivo_0, 'documentacao/pessoas')
+            ]; 
+
+            $solicitante_externo->documentacao = $documentacao;
             $solicitante_externo->save();
         }
-
-        return response('Sucesso', 201);
+        
+        return response($solicitante_externo, 201);
     }
 
     public function destroy($id)

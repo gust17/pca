@@ -36,7 +36,7 @@ class AuthController extends Controller
         ]);
 
         if($data['modo_validade_senha'] == 'data_especifica') {
-            $user->password_validate = date("Y-m-d", strtotime($data['data_validade']));
+            $user->password_validate = formatDate($data['data_validade'], 'Y-m-d');
         }
 
         if($request->hasFile('photo_0')) {

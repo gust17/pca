@@ -31,4 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('user/{id}/delete',[\App\Http\Controllers\AdminController::class,'delete']);
     Route::put('user/{id}/update',[\App\Http\Controllers\AdminController::class,'userupdate']);
     Route::post('user/{id}/restore',[\App\Http\Controllers\AdminController::class,'restore']);
+
+    Route::post('solicitante-externo/{id}/upload-file',[\App\Http\Controllers\SolicitanteExternoController::class,'uploadFile']);
+    Route::apiResource('solicitante-externo', \App\Http\Controllers\SolicitanteExternoController::class);
 });

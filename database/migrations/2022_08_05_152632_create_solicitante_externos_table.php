@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('nacionalidade');
             $table->string('instituicao');
             $table->string('area_atuacao');
-            $table->string('numero_telefone');
-            $table->string('numero_celular');
+            $table->string('numero_telefone')->nullable();
+            $table->string('numero_celular')->nullable();
             $table->string('email');
             $table->json('documentacao')->nullable(); // tipo, path
             $table->timestamps();

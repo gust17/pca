@@ -9,6 +9,8 @@ class SolicitanteExterno extends Model
 {
     use HasFactory;
 
+    protected $table = 'solicitantes_externos';
+
     protected $fillable = [
         'nome',
         'cpf',
