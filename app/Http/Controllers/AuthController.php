@@ -13,15 +13,40 @@ class AuthController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'password' => 'required|string|confirmed'
+            'password' => 'string|confirmed',
+            'modo_validade_senha' => 'required|string',
+            'modo_senha' => 'required|string',
+            'type' => 'nullable',
+            'data_validade' => 'nullable',
+            'photo' => 'nullable'
         ]);
+
+        if ($data['modo_senha'] == 'automatico') {
+            $data['password'] = bcrypt('12345678');
+        } else {
+            $data['password'] = bcrypt($data['password']);
+        }
+
 
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-
+            'password' => $data['password'],
+            'type' => $data['type'],
         ]);
+
+        if($data['modo_validade_senha'] == 'data_especifica') {
+            $user->password_validate = date("Y-m-d", strtotime($data['data_validade']));
+        }
+
+        if($request->hasFile('photo_0')) {
+            $imageName = $request->file('photo_0')->getClientOriginalName() . time().'.'.$request->photo_0->extension();  
+            $request->photo_0->move(public_path('images/users/profile_pictures'), $imageName);
+            $fullName = 'images/users/profile_pictures/' . $imageName;
+            $user->photo = $fullName;
+        }
+        
+        $user->save();
 
         $token = $user->createToken('apiToken')->plainTextToken;
 

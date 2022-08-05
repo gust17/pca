@@ -31,6 +31,14 @@ class AdminController extends Controller
         $user = User::find($id);
         $user->update($request->all());
 
+        if($request->hasFile('photo_0')) {
+            $imageName = $request->file('photo_0')->getClientOriginalName() . time().'.'.$request->photo_0->extension();  
+            $request->photo_0->move(public_path('images/users/profile_pictures'), $imageName);
+            $fullName = 'images/users/profile_pictures/' . $imageName;
+            $user->photo = $fullName;
+            $user->save();
+        }
+
         return response($user,'201');
 
     }
