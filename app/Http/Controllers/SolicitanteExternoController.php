@@ -49,8 +49,27 @@ class SolicitanteExternoController extends Controller
         return response($solicitante_externo, 201);
     }
 
-    public function destroy($id)
+    public function removeFile($id, Request $request) 
     {
+        $data = $request->all();
 
+        $solicitante_externo = SolicitanteExterno::findOrFail($id);
+
+        if(count($solicitante_externo->documentacao) > 0) {
+            $documentacao = $solicitante_externo->documentacao;
+
+            array_splice($documentacao, $data['index']);
+
+            $solicitante_externo->documentacao = $documentacao;
+
+            $solicitante_externo->save();
+        }
+        
+        return response($solicitante_externo, 201);
+    }
+
+    public function show($id)
+    {
+        return response(SolicitanteExterno::findOrFail($id), 201);
     }
 }
