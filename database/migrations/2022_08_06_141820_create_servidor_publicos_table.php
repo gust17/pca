@@ -29,6 +29,10 @@ return new class extends Migration
             $table->string('grupo_trabalho');
             $table->string('area_atuacao');
             $table->string('formacao_profissional');
+            $table->string('numero_telefone')->nullable();
+            $table->string('numero_celular')->nullable();
+            $table->string('email');
+            $table->json('documentacao')->nullable(); // tipo, path
             $table->unsignedBigInteger('endereco_id');
             $table->foreign('endereco_id')->references('enderecos')->on('users');
             $table->string('foto')->nullable();

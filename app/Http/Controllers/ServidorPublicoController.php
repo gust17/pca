@@ -37,4 +37,43 @@ class ServidorPublicoController extends Controller
     {
         //
     }
+
+    public function uploadFile($id, Request $request) 
+    {
+        $data = $request->all();
+
+        $servidor_publico = ServidorPublico::findOrFail($id);
+
+        if($request->hasFile('arquivo_0')) {
+            $documentacao = $servidor_publico->documentacao;
+            $documentacao[] = [
+                'tipo' => $data['tipo_value'],
+                'arquivo' => uploadImg($request->arquivo_0, 'documentacao/pessoas')
+            ]; 
+
+            $servidor_publico->documentacao = $documentacao;
+            $servidor_publico->save();
+        }
+        
+        return response($servidor_publico, 201);
+    }
+
+    public function removeFile($id, Request $request) 
+    {
+        $data = $request->all();
+
+        $servidor_publico = ServidorPublico::findOrFail($id);
+
+        if(count($servidor_publico->documentacao) > 0) {
+            $documentacao = $servidor_publico->documentacao;
+
+            array_splice($documentacao, $data['index']);
+
+            $servidor_publico->documentacao = $documentacao;
+
+            $servidor_publico->save();
+        }
+        
+        return response($servidor_publico, 201);
+    }
 }

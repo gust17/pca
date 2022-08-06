@@ -38,6 +38,10 @@ class ServidorPublicoRequest extends FormRequest
             'grupo_trabalho' => ['required', 'string'],
             'area_atuacao' => ['required', 'string'],
             'formacao_profissional' => ['required', 'string'],
+            'numero_telefone' => ['nullable', 'string'],
+            'numero_celular' => ['nullable', 'string'],
+            'email' => ['required', 'string'],
+            'documentacao' => ['nullable', 'array'],
 
             'tipo_endereco' => ['required', 'string'],
             'cep' => ['required', 'string'],

@@ -26,7 +26,15 @@ class ServidorPublico extends Model
         'grupo_trabalho',
         'area_atuacao',
         'formacao_profissional',
+        'numero_telefone',
+        'numero_celular',
+        'email',
+        'documentacao',
         'endereco_id'
+    ];
+
+    protected $casts = [
+        'documentacao' => 'array'
     ];
 
     public function endereco() 
