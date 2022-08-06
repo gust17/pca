@@ -31,11 +31,11 @@ return new class extends Migration
             $table->string('formacao_profissional');
             $table->string('numero_telefone')->nullable();
             $table->string('numero_celular')->nullable();
+            $table->string('foto')->nullable();
             $table->string('email');
             $table->json('documentacao')->nullable(); // tipo, path
-            $table->unsignedBigInteger('endereco_id');
-            $table->foreign('endereco_id')->references('enderecos')->on('users');
-            $table->string('foto')->nullable();
+            $table->unsignedBigInteger('endereco_id')->nullable();
+            $table->foreign('endereco_id')->references('id')->on('enderecos');
             $table->timestamps();
         });
     }

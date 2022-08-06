@@ -41,7 +41,7 @@ class ServidorPublicoRequest extends FormRequest
             'numero_telefone' => ['nullable', 'string'],
             'numero_celular' => ['nullable', 'string'],
             'email' => ['required', 'string'],
-            'documentacao' => ['nullable', 'array'],
+            'foto' => ['nullable'],
 
             'tipo_endereco' => ['required', 'string'],
             'cep' => ['required', 'string'],
@@ -49,7 +49,7 @@ class ServidorPublicoRequest extends FormRequest
             'numero' => ['required', 'string'],
             'complemento' => ['nullable', 'string'],
             'bairro' => ['required', 'string'],
-            'uf' => ['required', 'string'],
+            'cidade' => ['required', 'string'],
         ];
     }
 }

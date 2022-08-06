@@ -38,7 +38,7 @@ class SolicitanteExternoController extends Controller
         if($request->hasFile('arquivo_0')) {
             $documentacao = $solicitante_externo->documentacao;
             $documentacao[] = [
-                'tipo' => $data['tipo_value'],
+                'tipo' => $data['tipo'],
                 'arquivo' => uploadImg($request->arquivo_0, 'documentacao/pessoas')
             ]; 
 

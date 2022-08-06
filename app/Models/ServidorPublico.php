@@ -30,11 +30,16 @@ class ServidorPublico extends Model
         'numero_celular',
         'email',
         'documentacao',
-        'endereco_id'
+        'endereco_id',
+        'foto'
     ];
 
     protected $casts = [
         'documentacao' => 'array'
+    ];
+
+    protected $with = [
+        'endereco'
     ];
 
     public function endereco() 

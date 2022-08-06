@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ServidorPublico;
+use App\Models\Endereco;
 use Illuminate\Http\Request;
 
 class ServidorPublicoController extends Controller
@@ -17,23 +18,49 @@ class ServidorPublicoController extends Controller
         $inputs = $request->all();
         $inputs['data_nascimento'] = formatDate($inputs['data_nascimento'], 'Y-m-d');
 
-        return response(ServidorPublico::create($inputs), 201);
+        $endereco = Endereco::create($inputs);
+
+        $servidor_publico = ServidorPublico::create($inputs);
+
+        $servidor_publico->endereco()->associate($endereco)->save();
+
+        if($request->hasFile('foto_0')) {
+            $servidor_publico->foto = uploadImg($request->foto_0, 'images/servidores_publicos/profile_pictures');
+            $servidor_publico->save();
+        }
+
+        return response($servidor_publico, 201);
     }
 
-    public function show(ServidorPublico $servidorPublico)
+    public function show($id)
     {
         return response(ServidorPublico::findOrFail($id), 201);
     }
 
-    public function update(Request $request, ServidorPublico $servidorPublico)
+    public function update(Request $request, $id)
     {
+        $servidor_publico = ServidorPublico::findOrFail($id);
+
         $inputs = $request->all();
         $inputs['data_nascimento'] = formatDate($inputs['data_nascimento'], 'Y-m-d');
+
+        $servidor_publico->fill($inputs)->save();
+
+        $endereco = Endereco::findOrFail($servidor_publico->endereco_id);
+        $endereco->fill($inputs)->save();
+
+        if($request->hasFile('foto_0')) {
+            if($servidor_publico->foto)
+                removeImg($servidor_publico->foto);
+                
+            $servidor_publico->foto = uploadImg($request->foto_0, 'images/servidores_publicos/profile_pictures');
+            $servidor_publico->save();
+        }
 
         return response(ServidorPublico::findOrFail($id)->update($inputs), 201);
     }
 
-    public function destroy(ServidorPublico $servidorPublico)
+    public function destroy($id)
     {
         //
     }
@@ -47,7 +74,7 @@ class ServidorPublicoController extends Controller
         if($request->hasFile('arquivo_0')) {
             $documentacao = $servidor_publico->documentacao;
             $documentacao[] = [
-                'tipo' => $data['tipo_value'],
+                'tipo' => $data['tipo'],
                 'arquivo' => uploadImg($request->arquivo_0, 'documentacao/pessoas')
             ]; 
 
