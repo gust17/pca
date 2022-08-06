@@ -35,4 +35,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('solicitante-externo/{id}/upload-file',[\App\Http\Controllers\SolicitanteExternoController::class,'uploadFile']);
     Route::post('solicitante-externo/{id}/remove-file',[\App\Http\Controllers\SolicitanteExternoController::class,'removeFile']);
     Route::apiResource('solicitante-externo', \App\Http\Controllers\SolicitanteExternoController::class);
+    Route::apiResource('servidor-publico', \App\Http\Controllers\ServidorPublicoController::class);
 });
