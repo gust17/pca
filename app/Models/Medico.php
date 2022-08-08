@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Endereco extends Model
+class Medico extends Model
 {
     use HasFactory;
 
-    protected $table = 'enderecos';
+    protected $table = 'medicos';
 
     protected $fillable = [
-        'tipo_endereco',
-        'cep',
-        'logradouro',
-        'numero',
-        'complemento',
-        'bairro',
+        'nome',
+        'crm',
+        'telefone',
+        'email',
         'cidade',
+        'uf',
     ];
+
 
     protected $hidden = [
         'created_at',

@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('enderecos', function (Blueprint $table) {
+        Schema::create('cartorios', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo_endereco');
-            $table->string('cep');
-            $table->string('logradouro');
-            $table->string('numero');
-            $table->string('complemento')->nullable();
-            $table->string('bairro');
-            $table->string('cidade');
+            $table->string('cartorio')->nullable();
+            $table->string('codigo')->nullable();
+            $table->string('registro')->nullable();
+            $table->date('data')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('uf')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enderecos');
+        Schema::dropIfExists('cartorios');
     }
 };

@@ -26,19 +26,25 @@ Route::post('servidor-publico/{id}/upload-file',[\App\Http\Controllers\ServidorP
 Route::post('servidor-publico/{id}/remove-file',[\App\Http\Controllers\ServidorPublicoController::class,'removeFile']);
 Route::apiResource('servidor-publico', \App\Http\Controllers\ServidorPublicoController::class);
 
+Route::post('periciando-morto/{id}/upload-file',[\App\Http\Controllers\PericiandoMortoController::class,'uploadFile']);
+Route::post('periciando-morto/{id}/remove-file',[\App\Http\Controllers\PericiandoMortoController::class,'removeFile']);
+Route::apiResource('periciando-morto', \App\Http\Controllers\PericiandoMortoController::class);
+
+
+Route::get('/users',[\App\Http\Controllers\AdminController::class,'users']);
+Route::get('user/{id}',[\App\Http\Controllers\AdminController::class,'showuser']);
+Route::delete('user/{id}/delete',[\App\Http\Controllers\AdminController::class,'delete']);
+Route::put('user/{id}/update',[\App\Http\Controllers\AdminController::class,'userupdate']);
+Route::post('user/{id}/restore',[\App\Http\Controllers\AdminController::class,'restore']);
+
+Route::post('solicitante-externo/{id}/upload-file',[\App\Http\Controllers\SolicitanteExternoController::class,'uploadFile']);
+Route::post('solicitante-externo/{id}/remove-file',[\App\Http\Controllers\SolicitanteExternoController::class,'removeFile']);
+Route::apiResource('solicitante-externo', \App\Http\Controllers\SolicitanteExternoController::class);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 
     
-    Route::get('/users',[\App\Http\Controllers\AdminController::class,'users']);
-    Route::get('user/{id}',[\App\Http\Controllers\AdminController::class,'showuser']);
-    Route::delete('user/{id}/delete',[\App\Http\Controllers\AdminController::class,'delete']);
-    Route::put('user/{id}/update',[\App\Http\Controllers\AdminController::class,'userupdate']);
-    Route::post('user/{id}/restore',[\App\Http\Controllers\AdminController::class,'restore']);
-
-    Route::post('solicitante-externo/{id}/upload-file',[\App\Http\Controllers\SolicitanteExternoController::class,'uploadFile']);
-    Route::post('solicitante-externo/{id}/remove-file',[\App\Http\Controllers\SolicitanteExternoController::class,'removeFile']);
-    Route::apiResource('solicitante-externo', \App\Http\Controllers\SolicitanteExternoController::class);
 
 });
