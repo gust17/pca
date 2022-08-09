@@ -15,19 +15,18 @@ class ServidorPublicoController extends Controller
 
     public function store(Request $request)
     {
-        $inputs = $request->all();
-        $inputs['data_nascimento'] = formatDate($inputs['data_nascimento'], 'Y-m-d');
+        $data = (array) json_decode($request->model);
 
-        $endereco = Endereco::create($inputs);
+        $endereco = Endereco::create((array) $data['endereco']);
 
-        $servidor_publico = ServidorPublico::create($inputs);
+        $servidor_publico = ServidorPublico::create($data);
 
         $servidor_publico->endereco()->associate($endereco)->save();
 
-        if($request->hasFile('foto_0')) {
-            $servidor_publico->foto = uploadImg($request->foto_0, 'images/servidores_publicos/profile_pictures');
-            $servidor_publico->save();
-        }
+        // if($request->hasFile('foto_0')) {
+        //     $servidor_publico->foto = uploadImg($request->foto_0, 'images/servidores_publicos/profile_pictures');
+        //     $servidor_publico->save();
+        // }
 
         return response($servidor_publico, 201);
     }
@@ -49,13 +48,13 @@ class ServidorPublicoController extends Controller
         $endereco = Endereco::findOrFail($servidor_publico->endereco_id);
         $endereco->fill($inputs)->save();
 
-        if($request->hasFile('foto_0')) {
-            if($servidor_publico->foto)
-                removeImg($servidor_publico->foto);
+        // if($request->hasFile('foto_0')) {
+        //     if($servidor_publico->foto)
+        //         removeImg($servidor_publico->foto);
                 
-            $servidor_publico->foto = uploadImg($request->foto_0, 'images/servidores_publicos/profile_pictures');
-            $servidor_publico->save();
-        }
+        //     $servidor_publico->foto = uploadImg($request->foto_0, 'images/servidores_publicos/profile_pictures');
+        //     $servidor_publico->save();
+        // }
 
         return response(ServidorPublico::findOrFail($id)->update($inputs), 201);
     }

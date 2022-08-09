@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\SolicitanteExterno;
-use App\Http\Requests\SolicitanteExternoRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SolicitanteExternoController extends Controller
 {
@@ -13,20 +13,23 @@ class SolicitanteExternoController extends Controller
         return response(SolicitanteExterno::all(), 201);
     }
 
-    public function store(SolicitanteExternoRequest $request)
+    public function store(Request $request)
     {
-        $inputs = $request->all();
-        $inputs['data_nascimento'] = formatDate($inputs['data_nascimento'], 'Y-m-d');
 
-        return response(SolicitanteExterno::create($inputs), 201);
+        $data = (array) json_decode($request->model);
+
+        return response(SolicitanteExterno::create($data), 201);
     }
 
-    public function update($id, SolicitanteExternoRequest $request)
+    public function update($id, Request $request)
     {
-        $inputs = $request->all();
-        $inputs['data_nascimento'] = formatDate($inputs['data_nascimento'], 'Y-m-d');
 
-        return response(SolicitanteExterno::findOrFail($id)->update($inputs), 201);
+        $data = (array) json_decode($request->model);
+
+        $model = SolicitanteExterno::findOrFail($id);
+        $model->fill($data)->save();
+
+        return response($model, 201);
     }
 
     public function uploadFile($id, Request $request) 
@@ -71,5 +74,25 @@ class SolicitanteExternoController extends Controller
     public function show($id)
     {
         return response(SolicitanteExterno::findOrFail($id), 201);
+    }
+
+    private function validation(Request $request) {
+        $validator = Validator::make((array) $request->model, [
+            'nome' => ['required', 'string'],
+            'cpf' => ['required', 'string'],
+            'rg' => ['required', 'string'],
+            'data_nascimento' => ['required', 'date'],
+            'nacionalidade' => ['required', 'string'],
+            'instituicao' => ['required', 'string'],
+            'area_atuacao' => ['required', 'string'],
+            'numero_telefone' => ['nullable', 'string'],
+            'numero_celular' => ['nullable', 'string'],
+            'email' => ['required', 'string'],
+            'documentacao' => ['nullable', 'array']
+        ]);
+ 
+        if ($validator->fails()) {
+            return response($validator->errors(), 402);
+        }
     }
 }

@@ -26,6 +26,7 @@ class SolicitanteExterno extends Model
     ];
 
     protected $casts = [
+        'data_nascimento' => 'datetime',
         'documentacao' => 'array'
     ];
 }

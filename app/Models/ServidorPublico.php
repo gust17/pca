@@ -35,6 +35,7 @@ class ServidorPublico extends Model
     ];
 
     protected $casts = [
+        'data_nascimento' => 'datetime',
         'documentacao' => 'array'
     ];
 

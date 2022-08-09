@@ -42,7 +42,7 @@ if (! function_exists('getEscolaridade')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -66,7 +66,7 @@ if (! function_exists('getEstadoCivil')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -91,7 +91,7 @@ if (! function_exists('getFormacaoProfissional')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -115,7 +115,7 @@ if (! function_exists('getTipoEndereco')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -150,7 +150,7 @@ if (! function_exists('getCidade')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -277,7 +277,7 @@ if (! function_exists('getUF')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -302,7 +302,7 @@ if (! function_exists('getOrientacaoSexual')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -323,7 +323,7 @@ if (! function_exists('getTipoObito')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -344,7 +344,7 @@ if (! function_exists('getSexo')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -368,7 +368,7 @@ if (! function_exists('getCor')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -393,7 +393,7 @@ if (! function_exists('getLocalObito')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -414,7 +414,7 @@ if (! function_exists('getPadrao')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -437,7 +437,7 @@ if (! function_exists('getTipoGravidez')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -458,7 +458,7 @@ if (! function_exists('getTipoParto')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -480,7 +480,7 @@ if (! function_exists('getMorteParto')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -501,7 +501,7 @@ if (! function_exists('getNaturezaObito')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -526,7 +526,7 @@ if (! function_exists('getMomentoMorteMulher')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -549,7 +549,7 @@ if (! function_exists('getTipoCausaExternaObito')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -572,7 +572,7 @@ if (! function_exists('getFonteInformacaoObito')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -599,7 +599,7 @@ if (! function_exists('getTipoSanguineo')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -621,7 +621,7 @@ if (! function_exists('getBiotipo')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -649,7 +649,7 @@ if (! function_exists('getCorOlho')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -673,7 +673,7 @@ if (! function_exists('getTipoCabelo')) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
 
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -700,7 +700,7 @@ if (! function_exists('getCorCabelo')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
@@ -726,7 +726,7 @@ if (! function_exists('getCorteCabelo')) {
         if(isset($selectedOption)) {
             $collect = collect($options);
             $result = $collect->where('value', $selectedOption)->first();
-            if(count($result) > 0)
+            if($result)
                 return $result['text'];
 
             return '';
