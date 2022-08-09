@@ -20,8 +20,6 @@ class PericiandoMortoController extends Controller
 
     public function store(Request $request)
     {
-
-
         // obrigatório
         $dados_morto = json_decode($request->morto);
         $dados_ocorrencia = json_decode($request->ocorrencia);
