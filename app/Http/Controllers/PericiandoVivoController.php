@@ -11,7 +11,7 @@ class PericiandoVivoController extends Controller
 {
     public function index()
     {
-        $models = PericiandoVivo::select('id', 'nome', 'nomeMae', 'nomePai', 'cpf', 'rg')->get();
+        $models = PericiandoVivo::select('id', 'nome', 'nome_mae', 'nome_pai', 'cpf', 'rg')->get();
 
         return response($models, 201);
     }
