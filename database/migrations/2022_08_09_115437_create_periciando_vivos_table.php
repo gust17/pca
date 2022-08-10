@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('cartao_sus')->nullable();
             $table->string('naturalidade');
             $table->string('nome');
-            $table->string('nomePai')->nullable();
-            $table->string('nomeMae');
+            $table->string('nome_pai')->nullable();
+            $table->string('nome_mae');
             $table->date('data_nascimento');
             $table->date('hora_nascimento')->nullable();
             $table->string('idade');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('tipo_sanguineo');
             $table->string('altura');
             $table->string('biotipo');
-            $table->string('corOlho');
+            $table->string('cor_olho');
             $table->string('cor_cabelo');
             $table->string('tipo_cabelo');
             $table->longText('marca_cicatriz');

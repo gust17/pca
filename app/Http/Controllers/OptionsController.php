@@ -130,4 +130,19 @@ class OptionsController extends Controller
     {
         return getCorteCabelo();
     }
+
+    public function optionsTipoDocumento() 
+    {
+        return getTipoDocumento();
+    }
+
+    public function optionsGrauParentesco() 
+    {
+        return getGrauParentesco();
+    }
+
+    public function optionsCondicaoPessoa() 
+    {
+        return getCondicaoPessoa();
+    }
 }

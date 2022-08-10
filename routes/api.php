@@ -45,6 +45,9 @@ Route::get('/options/cor-olho',[\App\Http\Controllers\OptionsController::class,'
 Route::get('/options/tipo-cabelo',[\App\Http\Controllers\OptionsController::class,'optionsTipoCabelo']);
 Route::get('/options/cor-cabelo',[\App\Http\Controllers\OptionsController::class,'optionsCorCabelo']);
 Route::get('/options/corte-cabelo',[\App\Http\Controllers\OptionsController::class,'optionsCorteCabelo']);
+Route::get('/options/tipo-documento',[\App\Http\Controllers\OptionsController::class,'optionsTipoDocumento']);
+Route::get('/options/grau-parentesco',[\App\Http\Controllers\OptionsController::class,'optionsGrauParentesco']);
+Route::get('/options/condicao-pessoa',[\App\Http\Controllers\OptionsController::class,'optionsCondicaoPessoa']);
 
 
 Route::post('servidor-publico/{id}/upload-file',[\App\Http\Controllers\ServidorPublicoController::class,'uploadFile']);
@@ -58,6 +61,8 @@ Route::apiResource('periciando-morto', \App\Http\Controllers\PericiandoMortoCont
 Route::post('periciando-vivo/{id}/upload-file',[\App\Http\Controllers\PericiandoVivoController::class,'uploadFile']);
 Route::post('periciando-vivo/{id}/remove-file',[\App\Http\Controllers\PericiandoVivoController::class,'removeFile']);
 Route::apiResource('periciando-vivo', \App\Http\Controllers\PericiandoVivoController::class);
+
+Route::apiResource('desaparecido', \App\Http\Controllers\DesaparecidoController::class);
 
 Route::get('/users',[\App\Http\Controllers\AdminController::class,'users']);
 Route::get('user/{id}',[\App\Http\Controllers\AdminController::class,'showuser']);

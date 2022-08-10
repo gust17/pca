@@ -736,6 +736,76 @@ if (! function_exists('getCorteCabelo')) {
     }
 }
 
+if (! function_exists('getTipoDocumento')) {
+    function getTipoDocumento($selectedOption=null)
+    {
+        $options = [
+            [ 'text' => 'CPF', 'value' => 'cpf' ],
+            [ 'text' => 'RG', 'value' => 'rg' ],
+            [ 'text' => 'CNPJ', 'value' => 'cnpj' ],
+            [ 'text' => 'Passaporte', 'value' => 'passaporte' ]
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
+if (! function_exists('getGrauParentesco')) {
+    function getGrauParentesco($selectedOption=null)
+    {
+        $options = [
+            [ 'text' => 'Pai', 'value' => 'pai' ],
+            [ 'text' => 'Mãe', 'value' => 'mae' ],
+            [ 'text' => 'Cônjuge', 'value' => 'conjuge' ],
+            [ 'text' => 'Irmão(a)', 'value' => 'irmao-irma' ],
+            [ 'text' => 'Outro', 'value' => 'outro' ],
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
+if (! function_exists('getCondicaoPessoa')) {
+    function getCondicaoPessoa($selectedOption=null)
+    {
+        $options = [
+            [ 'text' => 'Criança', 'value' => 'crianca' ],
+            [ 'text' => 'Adolescente', 'value' => 'adolescente' ],
+            [ 'text' => 'Adulto', 'value' => 'adulto' ],
+            [ 'text' => 'Idoso', 'value' => 'idoso' ],
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
 
 
 
