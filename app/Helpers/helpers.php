@@ -29,7 +29,7 @@ if (! function_exists('formatDate')) {
 }
 
 if (! function_exists('getEscolaridade')) {
-    function getEscolaridade($selectedOption=null)
+    function getEscolaridade($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Sem escolaridade', 'value' => 'sem-escolaridade' ],
@@ -48,12 +48,23 @@ if (! function_exists('getEscolaridade')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
+
         return $options;
     }
 }
 
 if (! function_exists('getEstadoCivil')) {
-    function getEstadoCivil($selectedOption=null)
+    function getEstadoCivil($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Solteiro(a)', 'value' => 'solteiro' ],
@@ -72,12 +83,22 @@ if (! function_exists('getEstadoCivil')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getFormacaoProfissional')) {
-    function getFormacaoProfissional($selectedOption=null)
+    function getFormacaoProfissional($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Bacharelado', 'value' => 'bacharelado' ],
@@ -97,12 +118,22 @@ if (! function_exists('getFormacaoProfissional')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getTipoEndereco')) {
-    function getTipoEndereco($selectedOption=null)
+    function getTipoEndereco($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Via pública', 'value' => 'via-publica' ],
@@ -121,12 +152,22 @@ if (! function_exists('getTipoEndereco')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getCidade')) {
-    function getCidade($selectedOption=null)
+    function getCidade($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Amapá', 'value' => 'amapa' ],
@@ -156,12 +197,22 @@ if (! function_exists('getCidade')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getUF')) {
-    function getUF($selectedOption=null)
+    function getUF($selectedOption=null, $storeOption=null)
     {
         $options = [
             [
@@ -283,12 +334,22 @@ if (! function_exists('getUF')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getOrientacaoSexual')) {
-    function getOrientacaoSexual($selectedOption=null)
+    function getOrientacaoSexual($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Heterossexual', 'value' => 'heterossexual' ],
@@ -308,12 +369,22 @@ if (! function_exists('getOrientacaoSexual')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getTipoObito')) {
-    function getTipoObito($selectedOption=null)
+    function getTipoObito($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Fetal', 'value' => 'fetal' ],
@@ -329,12 +400,22 @@ if (! function_exists('getTipoObito')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getSexo')) {
-    function getSexo($selectedOption=null)
+    function getSexo($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Feminino', 'value' => 'feminino' ],
@@ -350,12 +431,22 @@ if (! function_exists('getSexo')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getCor')) {
-    function getCor($selectedOption=null)
+    function getCor($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Branca', 'value' => 'branca' ],
@@ -374,12 +465,22 @@ if (! function_exists('getCor')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getLocalObito')) {
-    function getLocalObito($selectedOption=null)
+    function getLocalObito($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Hospital', 'value' => 'hospital' ],
@@ -399,12 +500,22 @@ if (! function_exists('getLocalObito')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getPadrao')) {
-    function getPadrao($selectedOption=null)
+    function getPadrao($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Sim', 'value' => true ],
@@ -420,12 +531,22 @@ if (! function_exists('getPadrao')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getTipoGravidez')) {
-    function getTipoGravidez($selectedOption=null)
+    function getTipoGravidez($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Única', 'value' => 'unica' ],
@@ -443,12 +564,22 @@ if (! function_exists('getTipoGravidez')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getTipoParto')) {
-    function getTipoParto($selectedOption=null)
+    function getTipoParto($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Vaginal', 'value' => 'vaginal' ],
@@ -464,12 +595,22 @@ if (! function_exists('getTipoParto')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getMorteParto')) {
-    function getMorteParto($selectedOption=null)
+    function getMorteParto($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Antes', 'value' => 'antes' ],
@@ -486,12 +627,22 @@ if (! function_exists('getMorteParto')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getNaturezaObito')) {
-    function getNaturezaObito($selectedOption=null)
+    function getNaturezaObito($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Natural', 'value' => 'natural' ],
@@ -507,12 +658,22 @@ if (! function_exists('getNaturezaObito')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getMomentoMorteMulher')) {
-    function getMomentoMorteMulher($selectedOption=null)
+    function getMomentoMorteMulher($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'na gravidez', 'value' => 'gravidez' ],
@@ -532,12 +693,22 @@ if (! function_exists('getMomentoMorteMulher')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getTipoCausaExternaObito')) {
-    function getTipoCausaExternaObito($selectedOption=null)
+    function getTipoCausaExternaObito($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Acidente', 'value' => 'acidente' ],
@@ -555,12 +726,22 @@ if (! function_exists('getTipoCausaExternaObito')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getFonteInformacaoObito')) {
-    function getFonteInformacaoObito($selectedOption=null)
+    function getFonteInformacaoObito($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Ocorrência policial', 'value' => 'ocorrencia-policial' ],
@@ -578,12 +759,22 @@ if (! function_exists('getFonteInformacaoObito')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getTipoSanguineo')) {
-    function getTipoSanguineo($selectedOption=null)
+    function getTipoSanguineo($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'AB+', 'value' => 'ab-mais' ],
@@ -605,12 +796,22 @@ if (! function_exists('getTipoSanguineo')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getBiotipo')) {
-    function getBiotipo($selectedOption=null)
+    function getBiotipo($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Magro', 'value' => 'magro' ],
@@ -627,12 +828,22 @@ if (! function_exists('getBiotipo')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getCorOlho')) {
-    function getCorOlho($selectedOption=null)
+    function getCorOlho($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Castanhos escuros', 'value' => 'castanhos-escuros' ],
@@ -655,12 +866,22 @@ if (! function_exists('getCorOlho')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getTipoCabelo')) {
-    function getTipoCabelo($selectedOption=null)
+    function getTipoCabelo($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Crespos', 'value' => 'crespos' ],
@@ -684,7 +905,7 @@ if (! function_exists('getTipoCabelo')) {
 }
 
 if (! function_exists('getCorCabelo')) {
-    function getCorCabelo($selectedOption=null)
+    function getCorCabelo($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Amarelo', 'value' => 'amarelo' ],
@@ -706,12 +927,22 @@ if (! function_exists('getCorCabelo')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getCorteCabelo')) {
-    function getCorteCabelo($selectedOption=null)
+    function getCorteCabelo($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Curto', 'value' => 'curto' ],
@@ -732,12 +963,22 @@ if (! function_exists('getCorteCabelo')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getTipoDocumento')) {
-    function getTipoDocumento($selectedOption=null)
+    function getTipoDocumento($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'CPF', 'value' => 'cpf' ],
@@ -755,12 +996,22 @@ if (! function_exists('getTipoDocumento')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getGrauParentesco')) {
-    function getGrauParentesco($selectedOption=null)
+    function getGrauParentesco($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Pai', 'value' => 'pai' ],
@@ -779,12 +1030,22 @@ if (! function_exists('getGrauParentesco')) {
             return '';
         }
 
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
         return $options;
     }
 }
 
 if (! function_exists('getCondicaoPessoa')) {
-    function getCondicaoPessoa($selectedOption=null)
+    function getCondicaoPessoa($selectedOption=null, $storeOption=null)
     {
         $options = [
             [ 'text' => 'Criança', 'value' => 'crianca' ],
@@ -798,6 +1059,16 @@ if (! function_exists('getCondicaoPessoa')) {
             $result = $collect->where('value', $selectedOption)->first();
             if($result)
                 return $result['text'];
+
+            return '';
+        }
+
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
 
             return '';
         }

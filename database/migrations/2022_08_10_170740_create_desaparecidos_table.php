@@ -24,6 +24,8 @@ return new class extends Migration
             $table->json('fotos')->nullable();
             $table->longText('observacoes');
             $table->boolean('encontrado')->default(false);
+            $table->boolean('bo')->default(false);
+            $table->boolean('termo_consentimento_falsa_comunicacao')->default(false);
             $table->unsignedBigInteger('boletim_ocorrencia_id')->nullable();
             $table->foreign('boletim_ocorrencia_id')->references('id')->on('boletins_ocorrencias');
             $table->unsignedBigInteger('notificante_desaparecido_id')->nullable();

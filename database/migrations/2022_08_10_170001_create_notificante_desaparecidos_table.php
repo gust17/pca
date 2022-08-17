@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tipo_documento');
             $table->string('numero_documento');
             $table->string('grau_parentesco');
+            $table->string('email');
             $table->string('outro')->nullable();
             $table->string('numero_telefone');
             $table->unsignedBigInteger('endereco_id')->nullable();

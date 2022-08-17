@@ -34,6 +34,13 @@ class Endereco extends Model
         );
     }
 
+    public function cidade(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => getCidade($value)
+        );
+    }
+
     public function periciandoVivo()
     {
         return $this->hasOne(PericiandoVivo::class);

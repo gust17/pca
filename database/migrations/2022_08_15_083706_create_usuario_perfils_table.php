@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('usuario_perfils', function (Blueprint $table) {
+        Schema::create('usuarios_perfis', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario_perfils');
+        Schema::dropIfExists('usuarios_perfis');
     }
 };

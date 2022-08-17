@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Desaparecido;
+use App\Models\NotificanteDesaparecido;
+use App\Models\Endereco;
+use App\Models\BoletimOcorrencia;
 use Illuminate\Http\Request;
 
 class DesaparecidoController extends Controller
@@ -47,7 +50,9 @@ class DesaparecidoController extends Controller
 
     public function show($id)
     {
-        //
+        $model = Desaparecido::findOrFail($id);
+        
+        return response($model, 201);
     }
 
     public function update(Request $request, $id)

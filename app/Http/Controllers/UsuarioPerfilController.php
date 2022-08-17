@@ -35,7 +35,7 @@ class UsuarioPerfilController extends Controller
     {
         $dadosModel = json_decode($request->model);
         $model = UsuarioPerfil::findOrFail($id);
-        $model->fill($dadosModel)->save();
+        $model->fill((array) $dadosModel)->save();
         
         return response($model, 201);
     }
