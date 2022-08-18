@@ -77,7 +77,11 @@ Route::apiResource('solicitante-externo', \App\Http\Controllers\SolicitanteExter
 
 Route::apiResource('usuario-perfil', \App\Http\Controllers\UsuarioPerfilController::class);
 
+Route::apiResource('entidade-externa', \App\Http\Controllers\EntidadeExternaController::class);
+
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
-    Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+   
 });

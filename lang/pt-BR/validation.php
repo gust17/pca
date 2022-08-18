@@ -168,11 +168,17 @@ return [
         'minute'    => 'minuto',
         'mobile'    => 'celular',
         'month'     => 'mês',
+
         'name'      => 'nome',
+        'model.nome' => 'nome',
+
         'neighborhood' => 'bairro',
         'number'    => 'número',
         'password'  => 'senha',
+
         'phone'     => 'telefone',
+        'model.numero_telefone' => 'telefone',
+
         'second'    => 'segundo',
         'sex'       => 'sexo',
         'state'     => 'estado',
@@ -186,6 +192,17 @@ return [
         'description' => 'descrição',
         'password_confirmation' => 'confirmação da senha',
         'current_password' => 'senha atual',
+
+        'model.sigla' => 'sigla',
+        'model.email' => 'email',
+        'model.nome_representante' => 'nome representante',
+        'model.endereco.tipo_endereco' => 'tipo de endereço',
+        'model.endereco.cep' => 'cep do endereço',
+        'model.endereco.logradouro' => 'logradouro do endereço',
+        'model.endereco.numero' => 'número do endereço',
+        'model.endereco.complemento' => 'complemento do endereço',
+        'model.endereco.bairro' => 'bairro do endereço',
+        'model.endereco.cidade' => 'cidade do endereço',
     ],
 
 ];

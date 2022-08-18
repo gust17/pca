@@ -36,11 +36,12 @@ class AuthController extends Controller
         ]);
 
         if($data['modo_validade_senha'] == 'data_especifica') {
-            $user->password_validate = formatDate($data['data_validade'], 'Y-m-d');
+            $user->password_validate = $data['data_validade'];
         }
 
-        if($request->hasFile('photo_0')) {
-            $user->photo = uploadImg($request->photo_0, 'images/users/profile_pictures');
+
+        if($request->hasFile('photo')) {
+            $user->photo = uploadImg($request->file('photo'), 'images/users/profile_pictures');
         }
         
         $user->save();

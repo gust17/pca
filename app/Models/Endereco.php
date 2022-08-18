@@ -30,14 +30,16 @@ class Endereco extends Model
     public function tipoEndereco(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => getTipoEndereco($value)
+            get: fn ($value) => getTipoEndereco($value),
+            set: fn ($value) => getTipoEndereco(null, $value)
         );
     }
 
     public function cidade(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => getCidade($value)
+            get: fn ($value) => getCidade($value),
+            set: fn ($value) => getCidade(null, $value)
         );
     }
 
