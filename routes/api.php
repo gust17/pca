@@ -50,6 +50,8 @@ Route::get('/options/grau-parentesco',[\App\Http\Controllers\OptionsController::
 Route::get('/options/condicao-pessoa',[\App\Http\Controllers\OptionsController::class,'optionsCondicaoPessoa']);
 Route::get('/options/perfil-usuario',[\App\Http\Controllers\OptionsController::class,'optionsPerfilUsuario']);
 
+Route::get('/utils/get-address/{cep}',[\App\Http\Controllers\UtilsController::class,'getAddress']);
+
 Route::get('/usuario-perfil/options',[\App\Http\Controllers\UsuarioPerfilController::class,'getOptions']);
 
 Route::post('servidor-publico/{id}/upload-file',[\App\Http\Controllers\ServidorPublicoController::class,'uploadFile']);
