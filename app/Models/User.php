@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -47,4 +48,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password_validate' => 'datetime'
     ];
+
+    public function type(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => UsuarioPerfil::where('id', $value)->first()->nome,
+            set: fn ($value) => UsuarioPerfil::where('nome', $value)->first()->id
+        );
+    }
 }

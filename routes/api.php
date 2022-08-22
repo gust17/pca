@@ -48,6 +48,7 @@ Route::get('/options/corte-cabelo',[\App\Http\Controllers\OptionsController::cla
 Route::get('/options/tipo-documento',[\App\Http\Controllers\OptionsController::class,'optionsTipoDocumento']);
 Route::get('/options/grau-parentesco',[\App\Http\Controllers\OptionsController::class,'optionsGrauParentesco']);
 Route::get('/options/condicao-pessoa',[\App\Http\Controllers\OptionsController::class,'optionsCondicaoPessoa']);
+Route::get('/options/perfil-usuario',[\App\Http\Controllers\OptionsController::class,'optionsPerfilUsuario']);
 
 Route::get('/usuario-perfil/options',[\App\Http\Controllers\UsuarioPerfilController::class,'getOptions']);
 

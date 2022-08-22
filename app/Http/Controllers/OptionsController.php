@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UsuarioPerfil;
+
 use Illuminate\Http\Request;
 
 class OptionsController extends Controller
@@ -144,5 +146,12 @@ class OptionsController extends Controller
     public function optionsCondicaoPessoa() 
     {
         return getCondicaoPessoa();
+    }
+
+    public function optionsPerfilUsuario() 
+    {
+        $options =  UsuarioPerfil::select('id as value', 'nome as text')->get();
+
+        return response($options, 201);
     }
 }
