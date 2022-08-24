@@ -28,6 +28,16 @@ if (! function_exists('formatDate')) {
     }
 }
 
+if (! function_exists('codeMaker')) {
+    function codeMaker($id)
+    {
+        // formato: 00000/20XX
+        $value = sprintf('%05d', $id) . '/' . date("Y");
+
+        return $value;
+    }
+}
+
 if (! function_exists('getEscolaridade')) {
     function getEscolaridade($selectedOption=null, $storeOption=null)
     {
