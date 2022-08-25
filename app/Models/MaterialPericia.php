@@ -5,28 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Facades\DB;
 
-class Protocolo extends Model
+class MaterialPericia extends Model
 {
     use HasFactory;
 
-    protected $table = 'protocolos';
+    protected $table = 'materiais_periciais';
 
     protected $fillable = [
-        'id',
-        'numero_protocolo', // formato: 00000/20XX
-        'data_protocolo',
-        'hora_protocolo' ,
-        'usuario_receptor_id'
+        'numero_material',
+        'numero_lacre',
+        'categoria_material',
+        'tipo_material',
+        'caracteristicas_gerais_material',
+        'qtd_material',
+        'unidade_medida',
+        'pericia_id',
     ];
     
     protected $casts = [
-        'data_protocolo' => 'datetime',
-        'hora_protocolo' => 'datetime'
     ];
 
-    protected function numeroProtocolo(): Attribute
+    protected function numeroMaterial(): Attribute
     {
         return Attribute::make(
             set: fn ($value) => codeMaker($this->getNextId())
@@ -35,13 +35,13 @@ class Protocolo extends Model
 
     public function getNextId() 
     {
-        $statement = DB::select("show table status like 'protocolos'");
+        $statement = DB::select("show table status like 'materiais_periciais'");
 
         return $statement[0]->Auto_increment;
     }
 
     public function pericia()
     {
-        return $this->hasOne(Pericia::class);
+        return $this->belongsTo(Pericia::class);
     }
 }
