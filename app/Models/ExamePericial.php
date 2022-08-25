@@ -20,8 +20,8 @@ class ExamePericial extends Model
     protected $casts = [
     ];
 
-    public function pericia()
+    public function protocolo_pericia()
     {
-        return $this->belongsTo(Pericia::class);
+        return $this->belongsTo(ProtocoloPericia::class);
     }
 }

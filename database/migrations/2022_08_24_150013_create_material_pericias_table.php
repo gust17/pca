@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string('numero_lacre')->nullable();
             $table->string('categoria_material')->nullable();
             $table->string('tipo_material')->nullable();
+            $table->string('outros')->nullable();
             $table->longText('caracteristicas_gerais_material')->nullable();
             $table->float('qtd_material')->nullable();
             $table->string('unidade_medida')->nullable();
-            $table->unsignedBigInteger('pericia_id')->nullable();
-            $table->foreign('pericia_id')->references('id')->on('pericias');
+            $table->unsignedBigInteger('protocolo_pericia_id')->nullable();
+            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias');
             $table->timestamps();
         });
     }

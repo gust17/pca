@@ -7,18 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\DB;
 
-class Protocolo extends Model
+class ProtocoloPericia extends Model
 {
     use HasFactory;
 
-    protected $table = 'protocolos';
+    protected $table = 'protocolos_pericias';
 
     protected $fillable = [
         'id',
         'numero_protocolo', // formato: 00000/20XX
         'data_protocolo',
         'hora_protocolo' ,
-        'usuario_receptor_id'
+        'usuario_receptor_id',
+        'material',
     ];
     
     protected $casts = [
@@ -40,8 +41,8 @@ class Protocolo extends Model
         return $statement[0]->Auto_increment;
     }
 
-    public function pericia()
+    public function protocolo_pericia()
     {
-        return $this->hasOne(Pericia::class);
+        return $this->belongsTo(ProtocoloPericia::class);
     }
 }

@@ -24,9 +24,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pericias', function (Blueprint $table) {
+        Schema::create('documentos_referencias', function (Blueprint $table) {
             $table->id();
-            $table->boolean('material')->default(false);
             $table->string('numero_requisicao')->nullable();
             $table->string('ano_requisicao')->nullable();
             $table->string('status_solicitacao')->nullable();
@@ -35,8 +34,8 @@ return new class extends Migration
             $table->datetime('data_hora_protocolo')->nullable();
             $table->string('numero_caso')->nullable();
             $table->json('dados_usuario_protocolo')->nullable();
-            $table->unsignedBigInteger('protocolo_id')->nullable();
-            $table->foreign('protocolo_id')->references('id')->on('protocolos');
+            $table->unsignedBigInteger('protocolo_pericia_id')->nullable();
+            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias');
             $table->timestamps();
         });
     }
@@ -48,6 +47,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pericias');
+        Schema::dropIfExists('documentos_referencias');
     }
 };

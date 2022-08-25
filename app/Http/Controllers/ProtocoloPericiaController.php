@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pericia;
+use App\Models\ProtocoloPericia;
 use Illuminate\Http\Request;
 
-class PericiaController extends Controller
+class ProtocoloPericiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,16 +25,18 @@ class PericiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $model = ProtocoloPericia::create($request->all());
+
+        return response($model, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pericia  $pericia
+     * @param  \App\Models\ProtocoloPericia  $protocolo
      * @return \Illuminate\Http\Response
      */
-    public function show(Pericia $pericia)
+    public function show(ProtocoloPericia $protocolo)
     {
         //
     }
@@ -43,10 +45,10 @@ class PericiaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pericia  $pericia
+     * @param  \App\Models\ProtocoloPericia  $protocolo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pericia $pericia)
+    public function update(Request $request, ProtocoloPericia $protocolo)
     {
         //
     }
@@ -54,10 +56,10 @@ class PericiaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pericia  $pericia
+     * @param  \App\Models\ProtocoloPericia  $protocolo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pericia $pericia)
+    public function destroy(ProtocoloPericia $protocolo)
     {
         //
     }

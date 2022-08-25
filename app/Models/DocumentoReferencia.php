@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pericia extends Model
+class DocumentoReferencia extends Model
 {
     use HasFactory;
 
-    protected $table = 'pericias';
+    protected $table = 'documentos_referencias';
 
     protected $fillable = [
-        'material',
         'numero_requisicao',
         'ano_requisicao',
         'status_solicitacao',

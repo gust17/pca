@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('exames_periciais', function (Blueprint $table) {
             $table->string('id_manual');
             $table->string('tipo');
-            $table->unsignedBigInteger('pericia_id')->nullable();
-            $table->foreign('pericia_id')->references('id')->on('pericias');
+            $table->unsignedBigInteger('protocolo_pericia_id')->nullable();
+            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias');
             $table->timestamps();
         });
     }

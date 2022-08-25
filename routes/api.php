@@ -82,7 +82,7 @@ Route::apiResource('usuario-perfil', \App\Http\Controllers\UsuarioPerfilControll
 
 Route::apiResource('entidade-externa', \App\Http\Controllers\EntidadeExternaController::class);
 
-Route::apiResource('protocolo', \App\Http\Controllers\ProtocoloController::class);
+Route::apiResource('pericia', \App\Http\Controllers\ProtocoloPericiaController::class);
 
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
 Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);

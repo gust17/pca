@@ -21,6 +21,7 @@ class MaterialPericia extends Model
         'qtd_material',
         'unidade_medida',
         'pericia_id',
+        'outros',
     ];
     
     protected $casts = [
@@ -40,8 +41,8 @@ class MaterialPericia extends Model
         return $statement[0]->Auto_increment;
     }
 
-    public function pericia()
+    public function protocolo_pericia()
     {
-        return $this->belongsTo(Pericia::class);
+        return $this->belongsTo(ProtocoloPericia::class);
     }
 }

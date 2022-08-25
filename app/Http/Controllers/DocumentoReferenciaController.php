@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Protocolo;
+use App\Models\DocumentoReferencia;
 use Illuminate\Http\Request;
 
-class ProtocoloController extends Controller
+class DocumentoReferenciaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,18 +25,16 @@ class ProtocoloController extends Controller
      */
     public function store(Request $request)
     {
-        $model = Protocolo::create($request->all());
-
-        return response($model, 201);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Protocolo  $protocolo
+     * @param  \App\Models\DocumentoReferencia  $pericia
      * @return \Illuminate\Http\Response
      */
-    public function show(Protocolo $protocolo)
+    public function show(DocumentoReferencia $pericia)
     {
         //
     }
@@ -45,10 +43,10 @@ class ProtocoloController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Protocolo  $protocolo
+     * @param  \App\Models\DocumentoReferencia  $pericia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Protocolo $protocolo)
+    public function update(Request $request, DocumentoReferencia $pericia)
     {
         //
     }
@@ -56,10 +54,10 @@ class ProtocoloController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Protocolo  $protocolo
+     * @param  \App\Models\DocumentoReferencia  $pericia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Protocolo $protocolo)
+    public function destroy(DocumentoReferencia $pericia)
     {
         //
     }
