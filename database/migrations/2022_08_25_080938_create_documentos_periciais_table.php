@@ -27,7 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('pessoa_solicitante_id')->nullable();
             $table->foreign('pessoa_solicitante_id')->references('id')->on('users');
             $table->unsignedBigInteger('protocolo_pericia_id')->nullable();
-            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias');
+            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias')->onDelete('cascade');
             $table->unsignedBigInteger('protocolo_pericia_anterior_id')->nullable();
             $table->foreign('protocolo_pericia_anterior_id')->references('id')->on('protocolos_pericias');
             $table->timestamps();

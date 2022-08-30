@@ -27,8 +27,8 @@ class DocumentoReferencia extends Model
         'data_hora_protocolo' => 'datetime',
     ];
 
-    public function protocolo()
+    public function protocolo_pericia()
     {
-        return $this->belongsTo(Protocolo::class);
+        return $this->belongsTo(ProtocoloPericia::class);
     }
 }

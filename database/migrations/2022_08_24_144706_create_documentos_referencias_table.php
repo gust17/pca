@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('numero_caso')->nullable();
             $table->json('dados_usuario_protocolo')->nullable();
             $table->unsignedBigInteger('protocolo_pericia_id')->nullable();
-            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias');
+            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias')->onDelete('cascade');
             $table->timestamps();
         });
     }

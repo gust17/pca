@@ -14,17 +14,25 @@ class ProtocoloPericia extends Model
     protected $table = 'protocolos_pericias';
 
     protected $fillable = [
-        'id',
         'numero_protocolo', // formato: 00000/20XX
         'data_protocolo',
         'hora_protocolo' ,
         'usuario_receptor_id',
-        'material',
+        'tipo_pericia',
     ];
     
     protected $casts = [
         'data_protocolo' => 'datetime',
         'hora_protocolo' => 'datetime'
+    ];
+
+    protected $with = [
+        'receptor_solicitacao',
+        'documento_pericial.orgao_solicitante',
+        'documento_pericial.pessoa_solicitante',
+        'documento_referencia',
+        'exames_periciais',
+        'materiais_pericias'
     ];
 
     protected function numeroProtocolo(): Attribute
@@ -34,15 +42,43 @@ class ProtocoloPericia extends Model
         );
     }
 
+    protected function tipoPericia(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => getTipoPericia($value),
+            set: fn ($value) => getTipoPericia(null, $value)
+        );
+    }
+
     public function getNextId() 
     {
-        $statement = DB::select("show table status like 'protocolos'");
+        $statement = DB::select("show table status like 'protocolos_pericias'");
 
         return $statement[0]->Auto_increment;
     }
 
-    public function protocolo_pericia()
+    public function documento_pericial()
     {
-        return $this->belongsTo(ProtocoloPericia::class);
+        return $this->hasOne(DocumentoPericial::class);
+    }
+
+    public function documento_referencia()
+    {
+        return $this->hasOne(DocumentoReferencia::class);
+    }
+
+    public function materiais_pericias()
+    {
+        return $this->hasMany(MaterialPericia::class);
+    }
+
+    public function exames_periciais()
+    {
+        return $this->hasMany(ExamePericial::class);
+    }
+
+    public function receptor_solicitacao()
+    {
+        return $this->belongsTo(User::class, 'usuario_receptor_id', 'id');
     }
 }

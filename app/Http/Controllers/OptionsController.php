@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\UsuarioPerfil;
-
+use App\Models\User;
+use App\Models\EntidadeExterna;
+use App\Models\ProtocoloPericia;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class OptionsController extends Controller
@@ -148,9 +151,74 @@ class OptionsController extends Controller
         return getCondicaoPessoa();
     }
 
+    public function optionsTipoDocumentoPericia() 
+    {
+        return getTipoDocumentoPericia();
+    }
+
+    public function optionsTipoPericia() 
+    {
+        return getTipoPericia();
+    }
+
+    public function optionsDocumentoReferencia() 
+    {
+        return getDocumentoReferencia();
+    }
+
+    public function optionsCategoriaMaterial() 
+    {
+        return getCategoriaMaterial();
+    }
+
+    public function optionsTipoMaterial() 
+    {
+        return getTipoMaterial();
+    }
+
+    public function optionsUnidadeMedida() 
+    {
+        return getUnidadeMedida();
+    }
+
     public function optionsPerfilUsuario() 
     {
         $options =  UsuarioPerfil::select('id as value', 'nome as text')->get();
+
+        return response($options, 201);
+    }
+
+    public function optionsEntidadeExterna() 
+    {
+        $options =  EntidadeExterna::select(
+            'id as value', 
+            DB::raw("CONCAT(sigla, ' - ', nome) as text")
+        )->get();
+
+        return response($options, 201);
+    }
+
+    public function optionsUsuario() 
+    {
+        $users = User::all();
+
+        foreach($users as $user) {
+            $options[] = [
+                'value' => $user->id,
+                'text' => $user->name . ' - '. $user->email,
+                'group' => $user->type
+            ];
+        }
+
+        return response($options, 201);
+    }
+
+    public function optionsProtocoloPericia() 
+    {
+        $options =  ProtocoloPericia::select(
+            'id as value', 
+            'numero_protocolo as text'
+        )->get();
 
         return response($options, 201);
     }

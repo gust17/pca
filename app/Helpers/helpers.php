@@ -1,4 +1,5 @@
 <?php
+
 if (! function_exists('uploadImg')) {
     function uploadImg($file, $path)
     {
@@ -1061,7 +1062,209 @@ if (! function_exists('getCondicaoPessoa')) {
             [ 'text' => 'Criança', 'value' => 'crianca' ],
             [ 'text' => 'Adolescente', 'value' => 'adolescente' ],
             [ 'text' => 'Adulto', 'value' => 'adulto' ],
-            [ 'text' => 'Idoso', 'value' => 'idoso' ],
+            [ 'text' => 'Auto de Prisão em Flagrante', 'value' => 'idoso' ],
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
+if (! function_exists('getTipoDocumentoPericia')) {
+    function getTipoDocumentoPericia($selectedOption=null, $storeOption=null)
+    {
+        $options = [
+            [ 'text' => 'Ofício', 'value' => 'oficio' ],
+            [ 'text' => 'Requerimento', 'value' => 'requerimento' ],
+            [ 'text' => 'Inquérito Policial', 'value' => 'inquerito_policial' ],
+            [ 'text' => 'Auto de Prisão em Flagrante', 'value' => 'auto_de_prisao_em_flagrante' ],
+            [ 'text' => 'Requisição', 'value' => 'requisicao' ],
+            [ 'text' => 'Boletim de ocorrência', 'value' => 'boletim_de_ocorrencia' ],
+            [ 'text' => 'Termo circunstanciado', 'value' => 'termo_circunstanciado' ],
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
+if (! function_exists('getTipoPericia')) {
+    function getTipoPericia($selectedOption=null, $storeOption=null)
+    {
+        $options = [
+            [ 'text' => 'Com material', 'value' => 'com-material' ],
+            [ 'text' => 'Sem material', 'value' => 'sem-material' ],
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
+if (! function_exists('getDocumentoReferencia')) {
+    function getDocumentoReferencia($selectedOption=null, $storeOption=null)
+    {
+        $options = [
+            [ 'text' => 'Inquérito Policial', 'value' => 'inquerito_policial' ],
+            [ 'text' => 'Boletim de Ocorrência', 'value' => 'boletim_de_ocorrencia' ],
+            [ 'text' => 'Auto de Prisão em Flagrante', 'value' => 'auto_de_prisao_em_flagrante' ],
+            [ 'text' => 'Termo Circunstanciado', 'value' => 'termo_circunstanciado' ],
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
+if (! function_exists('getCategoriaMaterial')) {
+    function getCategoriaMaterial($selectedOption=null, $storeOption=null)
+    {
+        $options = [
+            [ 'text' => 'Biológico', 'value' => 'biologico' ],
+            [ 'text' => 'Não-Biológico', 'value' => 'nao-biologico' ],
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
+if (! function_exists('getTipoMaterial')) {
+    function getTipoMaterial($selectedOption=null, $storeOption=null)
+    {
+        $options = [
+            [ 'text' => 'Amostra', 'value' => 'amostra' ],
+            [ 'text' => 'Arma Branca', 'value' => 'arma_branca' ],
+            [ 'text' => 'Arma de Fogo', 'value' => 'arma_de_fogo' ],
+            [ 'text' => 'Artefato Caseiro', 'value' => 'artefato_caseiro' ],
+            [ 'text' => 'Cadáver', 'value' => 'cadaver' ],
+            [ 'text' => 'Droga', 'value' => 'droga' ],
+            [ 'text' => 'Elétrico', 'value' => 'eletrico' ],
+            [ 'text' => 'Eletrônico', 'value' => 'eletronico' ],
+            [ 'text' => 'Munição', 'value' => 'municao' ],
+            [ 'text' => 'Veículo', 'value' => 'veiculo' ],
+            [ 'text' => 'Outros', 'value' => 'outros' ],
+        ];
+
+        if(isset($selectedOption)) {
+            $collect = collect($options);
+            $result = $collect->where('value', $selectedOption)->first();
+            if($result)
+                return $result['text'];
+
+            return '';
+        }
+
+        
+        if(isset($storeOption)) {
+            $collect = collect($options);
+            $result = $collect->where('text', $storeOption)->first();
+            if($result)
+                return $result['value'];
+
+            return '';
+        }
+
+        return $options;
+    }
+}
+
+if (! function_exists('getUnidadeMedida')) {
+    function getUnidadeMedida($selectedOption=null, $storeOption=null)
+    {
+        $options = [
+            [ 'text' => 'Unidade medida 1', 'value' => '1' ],
+            [ 'text' => 'Unidade medida 2', 'value' => '2' ],
         ];
 
         if(isset($selectedOption)) {

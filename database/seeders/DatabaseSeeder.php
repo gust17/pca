@@ -26,5 +26,24 @@ class DatabaseSeeder extends Seeder
             'type' => 0,
             'password' => bcrypt('12345678')
         ]);
+
+        \App\Models\Endereco::create([
+            'tipo_endereco' => 'via-publica',
+            'cep' => '68904360',
+            'logradouro' => 'Av João Guerra',
+            'numero' => '1646',
+            'complemento' => null,
+            'bairro' => 'Congós',
+            'cidade' => 'amapa',
+        ]);
+
+        \App\Models\EntidadeExterna::create([
+            'nome' => 'Entidade externa teste',
+            'sigla' => 'ET',
+            'numero_telefone' => '9699999999',
+            'email' => 'entidadeteste@teste.com',
+            'nome_representante' => 'Representante teste',
+            'endereco_id' => 1
+        ]);
     }
 }

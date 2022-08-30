@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('exames_periciais', function (Blueprint $table) {
+            $table->id();
             $table->string('id_manual');
             $table->string('tipo');
             $table->unsignedBigInteger('protocolo_pericia_id')->nullable();
-            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias');
+            $table->foreign('protocolo_pericia_id')->references('id')->on('protocolos_pericias')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exame_pericials');
+        Schema::dropIfExists('exames_periciais');
     }
 };

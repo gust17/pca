@@ -10,7 +10,7 @@ class MaterialPericia extends Model
 {
     use HasFactory;
 
-    protected $table = 'materiais_periciais';
+    protected $table = 'materiais_pericias';
 
     protected $fillable = [
         'numero_material',
