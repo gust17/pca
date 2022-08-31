@@ -27,8 +27,8 @@ class ServidorPublicoController extends Controller
 
         $servidor_publico->endereco()->associate($endereco)->save();
 
-        if (isset($request->model['foto'][0])) {
-            $servidor_publico->foto = uploadImg($request->model['foto'][0], 'images/servidores_publicos/profile_pictures');
+        if (isset($request->model['foto'])) {
+            $servidor_publico->foto = uploadImg($request->model['foto'], 'images/servidores_publicos/profile_pictures');
             $servidor_publico->save();
         }
 
@@ -45,7 +45,7 @@ class ServidorPublicoController extends Controller
         $servidor_publico = ServidorPublico::findOrFail($id);
 
         $data = $request->model;
-        $foto = isset($request->model['foto'][0]) ? $request->model['foto'][0] : null;
+        $foto = isset($request->model['foto']) ? $request->model['foto'] : null;
         unset($data['foto']);
         $servidor_publico->fill($data)->save();
         $servidor_publico->endereco->fill($data['endereco'])->save();
