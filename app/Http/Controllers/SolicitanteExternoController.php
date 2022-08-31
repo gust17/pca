@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SolicitanteExterno;
+use App\Http\Requests\SolicitanteExternoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,23 +14,36 @@ class SolicitanteExternoController extends Controller
         return response(SolicitanteExterno::all(), 201);
     }
 
-    public function store(Request $request)
+    public function store(SolicitanteExternoRequest $request)
     {
 
-        $data = (array) json_decode($request->model);
+        $data = $request->model;
 
         return response(SolicitanteExterno::create($data), 201);
     }
 
-    public function update($id, Request $request)
+    public function update($id, SolicitanteExternoRequest $request)
     {
 
-        $data = (array) json_decode($request->model);
+        $data = $request->model;
 
         $model = SolicitanteExterno::findOrFail($id);
         $model->fill($data)->save();
 
         return response($model, 201);
+    }
+
+    public function destroy($id)
+    {
+        $model = SolicitanteExterno::findOrFail($id);
+        if (isset($model->documentacao)) {
+            foreach ($model->documentacao as $doc) {
+                removeImg($doc['arquivo']);
+            }
+        }
+        $model->delete();
+
+        return response('OK.', 201);
     }
 
     public function uploadFile($id, Request $request) 
@@ -77,7 +91,7 @@ class SolicitanteExternoController extends Controller
     }
 
     private function validation(Request $request) {
-        $validator = Validator::make((array) $request->model, [
+        $validator = Validator::make($request->model, [
             'nome' => ['required', 'string'],
             'cpf' => ['required', 'string'],
             'rg' => ['required', 'string'],

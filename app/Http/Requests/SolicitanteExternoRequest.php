@@ -24,19 +24,17 @@ class SolicitanteExternoRequest extends FormRequest
     public function rules()
     {
         return [
-            'model' => [
-                'nome' => ['required', 'string'],
-                'cpf' => ['required', 'string'],
-                'rg' => ['required', 'string'],
-                'data_nascimento' => ['required', 'date'],
-                'nacionalidade' => ['required', 'string'],
-                'instituicao' => ['required', 'string'],
-                'area_atuacao' => ['required', 'string'],
-                'numero_telefone' => ['nullable', 'string'],
-                'numero_celular' => ['nullable', 'string'],
-                'email' => ['required', 'string'],
-                'documentacao' => ['nullable', 'array']
-            ]
+            'model.nome' => ['required', 'string'],
+            'model.cpf' => ['required', 'string', 'cpf'],
+            'model.rg' => ['required', 'string'],
+            'model.data_nascimento' => ['required', 'date'],
+            'model.nacionalidade' => ['required', 'string'],
+            'model.instituicao' => ['required', 'string'],
+            'model.area_atuacao' => ['required', 'string'],
+            'model.numero_telefone' => ['nullable', 'string'],
+            'model.numero_celular' => ['nullable', 'string'],
+            'model.email' => ['required', 'string'],
+            'model.documentacao' => ['nullable', 'array']
         ];
     }
 }
