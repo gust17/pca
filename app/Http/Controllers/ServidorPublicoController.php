@@ -16,6 +16,9 @@ class ServidorPublicoController extends Controller
 
     public function store(ServidorPublicoRequest $request)
     {
+
+        // return response($request->model['foto']->getClientOriginalName(), 201);
+
         $data = $request->model;
 
         $endereco = Endereco::create($data['endereco']);
@@ -24,10 +27,10 @@ class ServidorPublicoController extends Controller
 
         $servidor_publico->endereco()->associate($endereco)->save();
 
-        // if($request->hasFile('foto_0')) {
-        //     $servidor_publico->foto = uploadImg($request->foto_0, 'images/servidores_publicos/profile_pictures');
-        //     $servidor_publico->save();
-        // }
+        if (isset($request->model['foto'])) {
+            $servidor_publico->foto = uploadImg($request->model['foto'], 'images/servidores_publicos/profile_pictures');
+            $servidor_publico->save();
+        }
 
         return response($servidor_publico, 201);
     }
@@ -37,25 +40,24 @@ class ServidorPublicoController extends Controller
         return response(ServidorPublico::findOrFail($id), 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(ServidorPublicoRequest $request, $id)
     {
         $servidor_publico = ServidorPublico::findOrFail($id);
 
-        $inputs = $request->all();
-        $inputs['data_nascimento'] = formatDate($inputs['data_nascimento'], 'Y-m-d');
+        $data = $request->model;
 
-        $servidor_publico->fill($inputs)->save();
 
-        $endereco = Endereco::findOrFail($servidor_publico->endereco_id);
-        $endereco->fill($inputs)->save();
+        $servidor_publico->fill($data)->save();
+        $servidor_publico->endereco->fill($data['endereco'])->save();
 
-        // if($request->hasFile('foto_0')) {
-        //     if($servidor_publico->foto)
-        //         removeImg($servidor_publico->foto);
-                
-        //     $servidor_publico->foto = uploadImg($request->foto_0, 'images/servidores_publicos/profile_pictures');
-        //     $servidor_publico->save();
-        // }
+        if (isset($request->model['foto'])) {
+            if (isset($servidor_publico->foto)) {
+                removeImg($servidor_publico->foto);
+            }
+
+            $servidor_publico->foto = uploadImg($request->model['foto'], 'images/servidores_publicos/profile_pictures');
+            $servidor_publico->save();
+        }
 
         return response(ServidorPublico::findOrFail($id)->update($inputs), 201);
     }
