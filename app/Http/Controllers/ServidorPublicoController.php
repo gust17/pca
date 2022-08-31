@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ServidorPublico;
 use App\Models\Endereco;
 use Illuminate\Http\Request;
+use App\Http\Requests\ServidorPublicoRequest;
 
 class ServidorPublicoController extends Controller
 {
@@ -13,11 +14,11 @@ class ServidorPublicoController extends Controller
         return response(ServidorPublico::all(), 201);
     }
 
-    public function store(Request $request)
+    public function store(ServidorPublicoRequest $request)
     {
-        $data = (array) json_decode($request->model);
+        $data = $request->model;
 
-        $endereco = Endereco::create((array) $data['endereco']);
+        $endereco = Endereco::create($data['endereco']);
 
         $servidor_publico = ServidorPublico::create($data);
 

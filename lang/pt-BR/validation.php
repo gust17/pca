@@ -179,6 +179,8 @@ return [
         'phone'     => 'telefone',
         'model.numero_telefone' => 'telefone',
 
+        'model.numero_celular' => 'número de celular',
+
         'second'    => 'segundo',
         'sex'       => 'sexo',
         'state'     => 'estado',
@@ -199,9 +201,17 @@ return [
         'model.email' => 'email',
         'model.nacionalidade' => 'nacionalidade',
         'model.instituicao' => 'instituição',
+        'model.matricula' => 'matrícula',
+        'model.orientacao_sexual' => 'orientação sexual',
         'model.data_nascimento' => 'data de nascimento',
+        'model.cor' => 'cor/etnia',
+        'model.naturalidade' => 'naturalidade',
+        'model.estado_civil' => 'estado civil',
+        'model.lotacao' => 'lotação',
+        'model.grupo_trabalho' => 'grupo de trabalho',
         'model.nome_representante' => 'nome representante',
         'model.area_atuacao' => 'área de atuação',
+        'model.formacao_profissional' => 'formação profissional',
         'model.endereco.tipo_endereco' => 'tipo de endereço',
         'model.endereco.cep' => 'cep do endereço',
         'model.endereco.logradouro' => 'logradouro do endereço',
@@ -209,6 +219,7 @@ return [
         'model.endereco.complemento' => 'complemento do endereço',
         'model.endereco.bairro' => 'bairro do endereço',
         'model.endereco.cidade' => 'cidade do endereço',
+        'model.foto' => 'foto'
     ],
 
 ];
