@@ -66,7 +66,7 @@ class PericiandoMorto extends Model
     protected function foto(): Attribute
     {
         return Attribute::make(
-            set: fn ($value) => count($value) == 0 ? null : ''
+            set: fn ($value) => ( empty($value) || is_null($value) ) ? null : ''
         );
     }
 
@@ -77,7 +77,7 @@ class PericiandoMorto extends Model
         );
     }
 
-    protected function data_nascimento(): Attribute
+    protected function dataNascimento(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => formatDate($value, 'Y-m-d')

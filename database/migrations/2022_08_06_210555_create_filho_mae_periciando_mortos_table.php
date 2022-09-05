@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('peso_nascimento')->nullable();
             $table->string('certidao_nascimento')->nullable();
             $table->unsignedBigInteger('mae_periciando_morto_id')->nullable();
-            $table->foreign('mae_periciando_morto_id')->references('id')->on('maes_periciandos_mortos');
+            $table->foreign('mae_periciando_morto_id')->references('id')->on('maes_periciandos_mortos')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -36,6 +36,7 @@ Route::get('/options/tipo-gravidez',[\App\Http\Controllers\OptionsController::cl
 Route::get('/options/tipo-parto',[\App\Http\Controllers\OptionsController::class,'optionsTipoParto']);
 Route::get('/options/morte-parto',[\App\Http\Controllers\OptionsController::class,'optionsMorteParto']);
 Route::get('/options/natureza-obito',[\App\Http\Controllers\OptionsController::class,'optionsNaturezaObito']);
+Route::get('/options/tipo-obito',[\App\Http\Controllers\OptionsController::class,'optionsTipoObito']);
 Route::get('/options/momento-morte-mulher',[\App\Http\Controllers\OptionsController::class,'optionsMomentoMorteMulher']);
 Route::get('/options/tipo-causa-externa-obito',[\App\Http\Controllers\OptionsController::class,'optionsTipoCausaExternaObito']);
 Route::get('/options/fonte-informacao-obito',[\App\Http\Controllers\OptionsController::class,'optionsFonteInformacaoObito']);

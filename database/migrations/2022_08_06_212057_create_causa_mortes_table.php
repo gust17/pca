@@ -20,7 +20,7 @@ return new class extends Migration
             $table->longText('motivacao_morte')->nullable();
             $table->time('tempo_doenca_morte')->nullable();
             $table->unsignedBigInteger('dado_obito_id')->nullable();
-            $table->foreign('dado_obito_id')->references('id')->on('dados_obitos');
+            $table->foreign('dado_obito_id')->references('id')->on('dados_obitos')->onDelete('cascade');
             $table->timestamps();
         });
     }

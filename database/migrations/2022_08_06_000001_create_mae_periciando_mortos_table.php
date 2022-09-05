@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ocupacao')->nullable();
             $table->string('codigo_cbo')->nullable();
             $table->unsignedBigInteger('periciando_morto_id')->nullable();
-            $table->foreign('periciando_morto_id')->references('id')->on('periciandos_mortos');
+            $table->foreign('periciando_morto_id')->references('id')->on('periciandos_mortos')->onDelete('cascade');
             $table->timestamps();
         });
     }

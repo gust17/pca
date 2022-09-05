@@ -65,6 +65,11 @@ class ServidorPublicoController extends Controller
     public function destroy($id)
     {
         $model = ServidorPublico::findOrFail($id);
+
+        if (isset($model->foto)) {
+            removeImg($model->foto);
+        }
+        
         if (isset($model->documentacao)) {
             foreach ($model->documentacao as $doc) {
                 removeImg($doc['arquivo']);

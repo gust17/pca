@@ -40,7 +40,7 @@ class MaePericiandoMorto extends Model
         );
     }
 
-    protected function data_nascimento(): Attribute
+    protected function dataNascimento(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => formatDate($value, 'Y-m-d')

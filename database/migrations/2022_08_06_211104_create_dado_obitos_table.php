@@ -26,7 +26,7 @@ return new class extends Migration
             $table->boolean('assistencia_durante_doenca')->default(false);
             $table->boolean('diagnostico_confirmado_necropsia')->default(false);
             $table->unsignedBigInteger('periciando_morto_id')->nullable();
-            $table->foreign('periciando_morto_id')->references('id')->on('periciandos_mortos');
+            $table->foreign('periciando_morto_id')->references('id')->on('periciandos_mortos')->onDelete('cascade');
             $table->timestamps();
         });
     }
