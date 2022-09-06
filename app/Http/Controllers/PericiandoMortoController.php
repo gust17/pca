@@ -8,6 +8,7 @@ use App\Models\Medico;
 use App\Models\Cartorio;
 use App\Models\CausaMorte;
 use Illuminate\Http\Request;
+use App\Http\Requests\PericiandoMortoRequest;
 
 class PericiandoMortoController extends Controller
 {
@@ -18,7 +19,7 @@ class PericiandoMortoController extends Controller
         return response($mortos, 201);
     }
 
-    public function store(Request $request)
+    public function store(PericiandoMortoRequest $request)
     {
         // return response($request->all(), 201);
         // return response([
@@ -93,7 +94,7 @@ class PericiandoMortoController extends Controller
         return response(PericiandoMorto::findOrFail($id), 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(PericiandoMortoRequest $request, $id)
     {
 
         // return response($request->all(), 201);

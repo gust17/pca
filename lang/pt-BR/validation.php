@@ -171,6 +171,7 @@ return [
 
         'name'      => 'nome',
         'model.nome' => 'nome',
+        'morto.nome' => 'nome',
 
         'neighborhood' => 'bairro',
         'number'    => 'número',
@@ -219,7 +220,47 @@ return [
         'model.endereco.complemento' => 'complemento do endereço',
         'model.endereco.bairro' => 'bairro do endereço',
         'model.endereco.cidade' => 'cidade do endereço',
-        'model.foto' => 'foto'
+        'model.foto' => 'foto',
+
+        'morto.tipo_obito' => 'tipo óbito',
+        'morto.data_obito' => 'data óbito',
+        'morto.naturalidade' => 'naturalidade',
+        'morto.nome_mae' => 'nome mãe',
+        'morto.data_nascimento' => 'data nascimento',
+        'morto.sexo' => 'sexo',
+        'morto.cor' => 'cor/raça',
+        'morto.estado_civil' => 'estado civil',
+        'morto.endereco.logradouro' => 'logradouro',
+        'morto.endereco.numero' => 'número',
+        'morto.endereco.cep' => 'cep',
+        'morto.endereco.bairro' => 'bairro',
+        'morto.endereco.cidade' => 'cidade',
+        
+
+        'ocorrencia.local' => 'local',
+        'ocorrencia.estabelecimento' => 'estabelecimento',
+        'ocorrencia.codigo_cnes' =>  'codigo cnes',
+        'ocorrencia.endereco.logradouro' => 'logradouro',
+        'ocorrencia.endereco.numero' => 'numero',
+        'ocorrencia.endereco.cep' => 'cep',
+        'ocorrencia.endereco.bairro' => 'bairro',
+        'ocorrencia.endereco.cidade' => 'cidade',
+
+
+        'causa_obito.data_entrada_dml' => 'data entrada dml',
+        'causa_obito.hora_entrada_dml' => 'hora entrada dml',
+        'causa_obito.data_obito' => 'data obito',
+        'causa_obito.hora_obito' => 'hora obito',
+        'causa_obito.natureza_obito' => 'natureza obito',
+        // 'objeto_causa_obito' => '',
+        // 'obito_mulher_idade_fertil' => '',
+        // 'obito_mulher_idade_fertil_momento' => '',
+        // 'assistencia_durante_doenca' => '',
+        // 'diagnostico_confirmado_necropsia' => '',
+
+        'medico.nome' => 'nome',
+        'medico.crm' => 'crm',
+
     ],
 
 ];
