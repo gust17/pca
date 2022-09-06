@@ -120,7 +120,7 @@ class PericiandoMortoController extends Controller
 
       $morto->fill($dados_morto)->save();
 
-      if (isset($foto)) {
+        if (isset($foto)) {
             if (isset($morto->foto) && !empty($morto->foto)) {
                 removeImg($morto->foto);
             }

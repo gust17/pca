@@ -18,13 +18,20 @@ class PericiandoVivoController extends Controller
 
     public function store(Request $request)
     {
-        $dadosModel = json_decode($request->model);
-        $dados_endereco = $dadosModel->endereco;
+        // return response($request->all(), 201);
 
-        $enderecoModel = Endereco::create((array) $dadosModel->endereco);
+        $dadosModel = $request->model;
+        $dados_endereco = $dadosModel['endereco'];
 
-        $model = PericiandoVivo::create((array) $dadosModel);
+        $enderecoModel = Endereco::create($dados_endereco);
+
+        $model = PericiandoVivo::create($dadosModel);
         $model->endereco()->associate($enderecoModel)->save();
+
+        if(!empty($request->model['foto'])) {
+            $model->foto = uploadImg($request->model['foto'], 'images/periciandos_vivos/profile_pictures');
+            $model->save();
+        }
 
         return response($model, 201);
     }
@@ -38,9 +45,24 @@ class PericiandoVivoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $dadosModel = json_decode($request->model);
+        $dadosModel = $request->model;
+        $dados_endereco = $dadosModel['endereco'];
+
         $model = PericiandoVivo::findOrFail($id);
         $model->fill($dadosModel)->save();
+
+        $model->endereco->fill($dados_endereco)->save();
+
+        $foto = isset($request->model['foto']) && !empty($request->model['foto']) ? $request->model['foto'] : null;
+
+        if (isset($foto)) {
+            if (isset($morto->foto) && !empty($morto->foto)) {
+                removeImg($morto->foto);
+            }
+
+            $morto->foto = uploadImg($foto, 'images/periciandos_vivos/profile_pictures');
+            $morto->save();
+        }
         
         return response($model, 201);
     }
