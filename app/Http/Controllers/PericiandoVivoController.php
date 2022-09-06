@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PericiandoVivo;
 use App\Models\Endereco;
 use Illuminate\Http\Request;
-use App\Http\Resources\PericiandoVivoResource;
+use App\Http\Requests\PericiandoVivoRequest;
 
 class PericiandoVivoController extends Controller
 {
@@ -16,7 +16,7 @@ class PericiandoVivoController extends Controller
         return response($models, 201);
     }
 
-    public function store(Request $request)
+    public function store(PericiandoVivoRequest $request)
     {
         // return response($request->all(), 201);
 
@@ -43,7 +43,7 @@ class PericiandoVivoController extends Controller
         return response($model, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(PericiandoVivoRequest $request, $id)
     {
         $dadosModel = $request->model;
         $dados_endereco = $dadosModel['endereco'];

@@ -24,32 +24,32 @@ class PericiandoVivoRequest extends FormRequest
     public function rules()
     {
         return [
-            'cartao_sus' => ['nullable', 'string'],
-            'naturalidade' => ['required', 'string'], // select
-            'nome' => ['required', 'string'],
-            'cpf' => ['required', 'string'],
-            'rg' => ['required', 'string'],
-            'nomePai' => ['nullable', 'string'],
-            'nomeMae' => ['required', 'string'],
-            'data_nascimento' => ['required', 'date'],
-            'hora_nascimento' => ['nullable', 'date'],
-            'idade' => ['nullable'],
-            'sexo' => ['required', 'string'], // select
-            'cor' => ['required', 'string'], // select
-            'tipo_sanguineo' => ['required', 'string'], // select
-            'altura' => ['required', 'string'],
-            'biotipo' => ['required', 'string'],
-            'corOlhos' => ['required', 'string'],
-            'cabelo' => ['required', 'string'],
-            'cor_cabelo' => ['required', 'string'],
-            'marca_cicatriz' => ['required', 'string'],
-            'estado_civil' => ['required', 'string'],
-            'escolaridade' => ['nullable', 'string'],
-            'ocupacao' => ['nullable', 'string'],
-            'codigo_cbo' => ['nullable', 'string'],
-            'foto' => ['nullable', 'file'],
-            'endereco' => ['required', 'array'],
-            'documentacao' => ['nullable'],
+            'model.cartao_sus' => ['nullable', 'string'],
+            'model.naturalidade' => ['required', 'string'], // select
+            'model.nome' => ['required', 'string'],
+            'model.cpf' => ['required', 'string'],
+            'model.rg' => ['required', 'string'],
+            'model.nome_pai' => ['nullable', 'string'],
+            'model.nome_mae' => ['required', 'string'],
+            'model.data_nascimento' => ['required', 'date'],
+            'model.hora_nascimento' => ['nullable', 'date'],
+            'model.idade' => ['nullable'],
+            'model.sexo' => ['required', 'string'], // select
+            'model.cor' => ['required', 'string'], // select
+            'model.tipo_sanguineo' => ['required', 'string'], // select
+            'model.altura' => ['required', 'string'],
+            'model.biotipo' => ['required', 'string'],
+            'model.cor_olhos' => ['required', 'string'],
+            'model.cabelo' => ['required', 'string'],
+            'model.cor_cabelo' => ['required', 'string'],
+            'model.marca_cicatriz' => ['required', 'string'],
+            'model.estado_civil' => ['required', 'string'],
+            'model.escolaridade' => ['nullable', 'string'],
+            'model.ocupacao' => ['nullable', 'string'],
+            'model.codigo_cbo' => ['nullable', 'string'],
+            'model.foto' => ['nullable', 'file'],
+            'model.endereco' => ['required', 'array'],
+            'model.documentacao' => ['nullable'],
         ];
     }
 }
