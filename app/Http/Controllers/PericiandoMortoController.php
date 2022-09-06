@@ -21,6 +21,11 @@ class PericiandoMortoController extends Controller
     public function store(Request $request)
     {
         // return response($request->all(), 201);
+        // return response([
+        //     'a' => $request->morto['foto']->getClientOriginalName(),
+        //     'gettype' => $request->morto['foto'],
+        //     'aaa' => $request->morto
+        // ], 201);
         
         // obrigatório
         $dados_morto = $request->morto;
@@ -50,7 +55,7 @@ class PericiandoMortoController extends Controller
 
         $morto = PericiandoMorto::create($dados_morto);
 
-        if(isset($request->morto['foto']) && !empty($request->morto['foto'])) {
+        if(!empty($request->morto['foto']) || count($request->morto['foto']) > 0 ) {
             $morto->foto = uploadImg($request->morto['foto'], 'images/periciandos_mortos/profile_pictures');
             $morto->save();
         }
@@ -90,60 +95,67 @@ class PericiandoMortoController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        // return response($request->all(), 201);
+
         $morto = PericiandoMorto::findOrFail($id);
 
         // return response((array) json_decode($request->causas_mortes), 201);
 
       // obrigatório
-      $dados_morto = json_decode($request->morto);
-      $dados_ocorrencia = json_decode($request->ocorrencia);
-      $dados_causa_obito = json_decode($request->causa_obito);
-      $dados_causas_mortes = json_decode($request->causas_mortes);
-      $dados_cartorio = json_decode($request->cartorio);
-      $dados_medico = json_decode($request->medico);
+      $dados_morto = $request->morto;
+      $foto = isset($request->morto['foto']) && !empty($request->morto['foto']) ? $request->morto['foto'] : null;
+      $dados_ocorrencia = $request->ocorrencia;
+      $dados_causa_obito = $request->causa_obito;
+      $dados_causas_mortes = $request->causas_mortes;
+      $dados_cartorio = $request->cartorio;
+      $dados_medico = $request->medico;
       // situacional
       if($request->mae) {
-          $dados_mae = json_decode($request->mae);
-          $dados_filho_da_mae = $dados_mae->filho;
+          $dados_mae = $request->mae;
+          $dados_filho_da_mae = $dados_mae['filho'];
       }
       
-      $dados_causa_externa = json_decode($request->causa_externa);
+      $dados_causa_externa = $request->causa_externa;
 
-      $morto->fill((array) $dados_morto)->save();
-    //   if($request->morto->foto[0]) {
-    //     if($morto->foto)
-    //         removeImg($morto->foto);
-            
-    //     $morto->foto = uploadImg($request->morto->foto[0], 'images/periciandos_mortos/profile_pictures');
-    //     $morto->save();
-    // }
-      $morto->endereco->fill((array) $dados_morto->endereco)->save();
-      $morto->medico->fill((array) $dados_medico)->save();
-      $morto->cartorio->fill((array) $dados_cartorio)->save();
-      $morto->ocorrencia->fill((array) $dados_ocorrencia)->save();
-      $morto->ocorrencia->endereco->fill((array) $dados_ocorrencia->endereco)->save();
-      $morto->causa_externa->fill((array) $dados_causa_externa)->save();
-      $morto->causa_externa->endereco->fill((array) $dados_causa_externa->endereco)->save();
-      $morto->causa_obito->fill((array) $dados_causa_obito)->save();
+      $morto->fill($dados_morto)->save();
+
+      if (isset($foto)) {
+            if (isset($morto->foto) && !empty($morto->foto)) {
+                removeImg($morto->foto);
+            }
+
+            $morto->foto = uploadImg($foto, 'images/periciandos_mortos/profile_pictures');
+            $morto->save();
+        }
+
+      $morto->endereco->fill($dados_morto['endereco'])->save();
+      $morto->medico->fill($dados_medico)->save();
+      $morto->cartorio->fill($dados_cartorio)->save();
+      $morto->ocorrencia->fill($dados_ocorrencia)->save();
+      $morto->ocorrencia->endereco->fill($dados_ocorrencia['endereco'])->save();
+      $morto->causa_externa->fill($dados_causa_externa)->save();
+      $morto->causa_externa->endereco->fill($dados_causa_externa['endereco'])->save();
+      $morto->causa_obito->fill($dados_causa_obito)->save();
 
       if($morto->causa_obito) {
           if(count($dados_causas_mortes) > 0) {
               foreach($dados_causas_mortes as $causa_morte) {
                     if(isset($causa_morte->id)){
                         $causa_morte_model = CausaMorte::find($causa_morte->id);
-                        $causa_morte_model->fill((array) $causa_morte)->save();
+                        $causa_morte_model->fill($causa_morte)->save();
                     }
                     else
-                        $morto->causa_obito->causas_mortes()->create((array) $causa_morte);
+                        $morto->causa_obito->causas_mortes()->create($causa_morte);
               }
           }
       }
 
       if(isset($dados_mae))
-          $morto->mae()->update((array) $dados_mae);
+          $morto->mae->fill($dados_mae)->save();
       
       if(isset($dados_filho_da_mae))
-          $morto->mae->filho()->update((array) $dados_filho_da_mae);
+          $morto->mae->filho->fill($dados_filho_da_mae)->save();
 
       return response($morto, 201);
     }

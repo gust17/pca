@@ -63,13 +63,6 @@ class PericiandoMorto extends Model
         'updated_at',
     ];
 
-    protected function foto(): Attribute
-    {
-        return Attribute::make(
-            set: fn ($value) => ( empty($value) || is_null($value) ) ? null : ''
-        );
-    }
-
     protected function dataObito(): Attribute
     {
         return Attribute::make(
