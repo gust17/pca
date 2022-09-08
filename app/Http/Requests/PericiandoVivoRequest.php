@@ -39,8 +39,8 @@ class PericiandoVivoRequest extends FormRequest
             'model.tipo_sanguineo' => ['required', 'string'], // select
             'model.altura' => ['required', 'string'],
             'model.biotipo' => ['required', 'string'],
-            'model.cor_olhos' => ['required', 'string'],
-            'model.cabelo' => ['required', 'string'],
+            'model.cor_olho' => ['required', 'string'],
+            'model.tipo_cabelo' => ['required', 'string'],
             'model.cor_cabelo' => ['required', 'string'],
             'model.marca_cicatriz' => ['required', 'string'],
             'model.estado_civil' => ['required', 'string'],
