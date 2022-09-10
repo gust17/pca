@@ -27,8 +27,8 @@ class ServidorPublicoController extends Controller
 
         $servidor_publico->endereco()->associate($endereco)->save();
 
-        if (isset($request->model['foto'])) {
-            $servidor_publico->foto = uploadImg($request->model['foto'], 'images/servidores_publicos/profile_pictures');
+        if ($request->hasFile('foto')) {
+            $servidor_publico->foto = uploadImg($request->file('foto'), 'images/servidores_publicos/profile_pictures');
             $servidor_publico->save();
         }
 
@@ -50,12 +50,12 @@ class ServidorPublicoController extends Controller
         $servidor_publico->fill($data)->save();
         $servidor_publico->endereco->fill($data['endereco'])->save();
 
-        if (isset($foto)) {
+        if ($request->hasFile('foto')) {
             if (isset($servidor_publico->foto) && !empty($servidor_publico->foto)) {
                 removeImg($servidor_publico->foto);
             }
 
-            $servidor_publico->foto = uploadImg($foto, 'images/servidores_publicos/profile_pictures');
+            $servidor_publico->foto = uploadImg($request->file('foto'), 'images/servidores_publicos/profile_pictures');
             $servidor_publico->save();
         }
 
@@ -66,11 +66,11 @@ class ServidorPublicoController extends Controller
     {
         $model = ServidorPublico::findOrFail($id);
 
-        if (isset($model->foto)) {
+        if (!empty($model->foto)) {
             removeImg($model->foto);
         }
         
-        if (isset($model->documentacao)) {
+        if (!empty($model->documentacao)) {
             foreach ($model->documentacao as $doc) {
                 removeImg($doc['arquivo']);
             }

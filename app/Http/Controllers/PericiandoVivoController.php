@@ -69,7 +69,20 @@ class PericiandoVivoController extends Controller
 
     public function destroy($id)
     {
-        //
+        $model = PericiandoVivo::findOrFail($id);
+
+        if (!empty($model->foto)) {
+            removeImg($model->foto);
+        }
+        
+        if (!empty($model->documentacao)) {
+            foreach ($model->documentacao as $doc) {
+                removeImg($doc['arquivo']);
+            }
+        }
+        $model->delete();
+
+        return response('OK.', 201);
     }
 
     public function uploadFile($id, Request $request) 

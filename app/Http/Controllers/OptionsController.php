@@ -6,6 +6,8 @@ use App\Models\UsuarioPerfil;
 use App\Models\User;
 use App\Models\EntidadeExterna;
 use App\Models\ProtocoloPericia;
+use App\Models\SolicitanteExterno;
+use App\Models\ServidorPublico;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -181,6 +183,11 @@ class OptionsController extends Controller
         return getUnidadeMedida();
     }
 
+    public function optionsPais() 
+    {
+        return getPais();
+    }
+
     public function optionsPerfilUsuario() 
     {
         $options =  UsuarioPerfil::select('id as value', 'nome as text')->get();
@@ -194,6 +201,38 @@ class OptionsController extends Controller
             'id as value', 
             DB::raw("CONCAT(sigla, ' - ', nome) as text")
         )->get();
+
+        return response($options, 201);
+    }
+
+    public function optionsPessoa() 
+    {
+        $solicitantes_externos = SolicitanteExterno::whereDoesntHave('user')->get();
+        $servidores_publicos = ServidorPublico::whereDoesntHave('user')->get();
+
+        $options = [];
+
+        foreach($solicitantes_externos as $solicitante_externo) {
+            $options[] = [
+                'value' => [
+                    'id' => $solicitante_externo->id,
+                    'model' => 'solicitante-externo'
+                ],
+                'text' => $solicitante_externo->nome . ' - '. $solicitante_externo->cpf,
+                'group' => 'Solicitante Externo'
+            ];
+        }
+
+        foreach($servidores_publicos as $servidor_publico) {
+            $options[] = [
+                'value' => [
+                    'id' => $servidor_publico->id,
+                    'model' => 'servidor-publico'
+                ],
+                'text' => $servidor_publico->nome . ' - '. $servidor_publico->cpf,
+                'group' => 'Servidor Público'
+            ];
+        }
 
         return response($options, 201);
     }

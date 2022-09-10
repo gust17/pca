@@ -29,6 +29,7 @@ class Desaparecido extends Model
     ];
     
     protected $casts = [
+        'fotos' => 'array'
     ];
 
     protected $with = [

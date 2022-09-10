@@ -55,8 +55,10 @@ Route::get('/options/documento-referencia',[\App\Http\Controllers\OptionsControl
 Route::get('/options/categoria-material',[\App\Http\Controllers\OptionsController::class,'optionsCategoriaMaterial']);
 Route::get('/options/tipo-material',[\App\Http\Controllers\OptionsController::class,'optionsTipoMaterial']);
 Route::get('/options/unidade-medida',[\App\Http\Controllers\OptionsController::class,'optionsUnidadeMedida']);
+Route::get('/options/pais',[\App\Http\Controllers\OptionsController::class,'optionsPais']);
 
 Route::get('/options/perfil-usuario',[\App\Http\Controllers\OptionsController::class,'optionsPerfilUsuario']);
+Route::get('/options/pessoa',[\App\Http\Controllers\OptionsController::class,'optionsPessoa']);
 Route::get('/options/usuario',[\App\Http\Controllers\OptionsController::class,'optionsUsuario']);
 Route::get('/options/entidade-externa',[\App\Http\Controllers\OptionsController::class,'optionsEntidadeExterna']);
 Route::get('/options/protocolo-pericia',[\App\Http\Controllers\OptionsController::class,'optionsProtocoloPericia']);

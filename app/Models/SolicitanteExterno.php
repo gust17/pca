@@ -29,4 +29,9 @@ class SolicitanteExterno extends Model
         'data_nascimento' => 'datetime',
         'documentacao' => 'array'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

@@ -10,10 +10,10 @@ class AuthController extends Controller
 {
     public function register(Request $request){
 
-        // return response($request->all(), 404);
+        // return response($request->name, 201);
 
         $data = $request->validate([
-            'name' => 'required|string',
+            'name' => 'required',
             'email' => 'required|string|unique:users,email',
             'password' => 'string|confirmed',
             'modo_validade_senha' => 'required|string',
@@ -29,13 +29,24 @@ class AuthController extends Controller
             $data['password'] = bcrypt($data['password']);
         }
 
+        $name = json_decode($data['name']);
 
-        $user = User::create([
-            'name' => $data['name'],
+        $data_model = [
             'email' => $data['email'],
             'password' => $data['password'],
             'type' => $data['type'],
-        ]);
+        ];
+
+        switch ($name->value->model) {
+            case 'servidor-publico':
+                $data_model['servidor_publico_id'] = $name->value->id;
+                break;
+            case 'solicitante-externo':
+                $data_model['solicitante_externo_id'] = $name->value->id;
+                break;
+        }
+
+        $user = User::create($data_model);
 
         if($data['modo_validade_senha'] == 'data_especifica') {
             $user->password_validate = $data['data_validade'];

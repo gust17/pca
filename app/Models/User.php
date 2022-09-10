@@ -20,13 +20,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        // 'name',
         'email',
         'password',
         'type',
         'password_validate',
         'photo',
-        'deleted_at'
+        'deleted_at',
+        'servidor_publico_id',
+        'solicitante_externo_id',
     ];
 
     /**
@@ -49,11 +51,36 @@ class User extends Authenticatable
         'password_validate' => 'datetime'
     ];
 
+    protected $appends = [
+        'name'
+    ];
+
+    public function getNameAttribute()
+    {
+        if(isset($this->servidor_publico))
+            return $this->attributes['name'] = $this->servidor_publico->nome;
+
+        if(isset($this->solicitante_externo))
+            return $this->attributes['name'] = $this->solicitante_externo->nome;
+
+        return '';
+    }
+
     public function type(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => UsuarioPerfil::where('id', $value)->first()->nome,
             set: fn ($value) => UsuarioPerfil::where('nome', $value)->first()->id
         );
+    }
+
+    public function servidor_publico()
+    {
+        return $this->belongsTo(ServidorPublico::class);
+    }
+
+    public function solicitante_externo()
+    {
+        return $this->belongsTo(SolicitanteExterno::class);
     }
 }

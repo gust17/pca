@@ -277,6 +277,21 @@ return [
         'medico.nome' => 'nome',
         'medico.crm' => 'crm',
 
+
+        'model.notificante_desaparecido.nome' => 'nome',
+        'model.notificante_desaparecido.numero_documento' => 'número documento',
+        'model.notificante_desaparecido.email' => 'email',
+        'model.notificante_desaparecido.numero_telefone' => 'número telefone',
+        'model.notificante_desaparecido.endereco' => 'endereço',
+
+        'model.nome' => 'nome',
+        'model.cpf' => 'cpf',
+        'model.uf' => 'uf',
+        'model.cidade' => 'cidade',
+        'model.condicao' => 'condição',
+        'model.foto' => 'foto',
+        'model.bo' => 'bo',
+        'model.termo_consentimento_falsa_comunicacao' => 'termo consentimento falsa comunicacao',
     ],
 
 ];
